@@ -85,7 +85,30 @@
                                   IsTitleBarAutoPaddingEnabled="False"
                                   Loaded="OnNavigationViewControlLoaded"
                                   PaneClosing="NavigationViewControl_PaneClosing"
-                                  PaneOpening="NavigationViewControl_PaneOpened" />
+                                  PaneOpening="NavigationViewControl_PaneOpened">
+                <settings:SettingsControl.PaneHeader>
+                        <Button Margin="-36,48,4,8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Transparent" BorderBrush="Transparent">
+                                <Grid HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Rectangle Margin="0,2,16,0" Grid.RowSpan="2" x:Name="ProfileImage" Height="32" Width="32" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                            <Rectangle.Fill>
+                                                <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/Lumia950.png"/>
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                        <TextBlock Grid.Column="1" FontWeight="Bold" Text="Lumia XXX" HorizontalAlignment="Left" />
+                                        <TextBlock Grid.Column="1" Grid.Row="1" Text="idXXX-X" HorizontalAlignment="Left" />
+                                </Grid>
+                        </Button>
+                </settings:SettingsControl.PaneHeader>
+        </settings:SettingsControl>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
