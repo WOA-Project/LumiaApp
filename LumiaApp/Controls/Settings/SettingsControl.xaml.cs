@@ -38,6 +38,7 @@ namespace LumiaApp.Controls.Settings
             MenuItems.Add(SettingsMenuItem.Create("GlanceScreen", "Glance Screen", "\uE90D", typeof(GlanceScreen.MainPage)));
             MenuItems.Add(SettingsMenuItem.Create("USBFunctionMode", "USB Function Mode", "\uE90D", typeof(USBFunctionMode.MainPage)));
             MenuItems.Add(SettingsMenuItem.Create("Vibration", "Vibration", "\uE90D", typeof(Vibration.MainPage)));
+            FooterMenuItems.Add(SettingsMenuItem.Create("About", "About", "\uE90D", typeof(LumiaApp.Pages.AboutPage)));
         }
 
         private void NavView_SelectionChanged(MUXC.NavigationView sender, MUXC.NavigationViewSelectionChangedEventArgs args)

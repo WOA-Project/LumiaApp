@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="LumiaApp.Pages.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LumiaApp.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:controls1="using:LumiaApp.Controls.Settings">
+
+    <controls1:SettingsPageControl ModuleDescription="Settings for your Lumia Phone"
+                                   ModuleTitle="About"
+                                   SecondaryLinksHeader="Links">
+        <controls1:SettingsPageControl.ModuleContent>
+            <StackPanel Orientation="Vertical">
+                <controls1:SettingsGroup Header="Version">
+                    <controls1:Setting x:Name="AppInfoBlock" Header="Lumia Settings">
+                        <controls1:Setting.Icon>
+                            <muxc:ImageIcon Source="/Assets/Square44x44Logo.png" />
+                        </controls1:Setting.Icon>
+
+                        <controls1:Setting.Description>
+                            <TextBlock>
+                                <Run Text="Version" />
+                                <Run x:Name="VersionTextBlock" />
+                            </TextBlock>
+                        </controls1:Setting.Description>
+                    </controls1:Setting>
+                </controls1:SettingsGroup>
+            </StackPanel>
+        </controls1:SettingsPageControl.ModuleContent>
+        <controls1:SettingsPageControl.PrimaryLinks>
+            <controls1:PageLink Text="Github Repository" />
+            <controls1:PageLink Text="Website" />
+        </controls1:SettingsPageControl.PrimaryLinks>
+        <controls1:SettingsPageControl.SecondaryLinks>
+            <controls1:PageLink Text="Third Party Notices" />
+            <controls1:PageLink Text="License" />
+        </controls1:SettingsPageControl.SecondaryLinks>
+    </controls1:SettingsPageControl>
+</Page>

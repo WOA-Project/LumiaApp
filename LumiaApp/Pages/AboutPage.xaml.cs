@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Microsoft.Toolkit.Uwp.Helpers;
+using Windows.ApplicationModel;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+
+namespace LumiaApp.Pages
+{
+    public sealed partial class AboutPage : Page
+    {
+        public AboutPage()
+        {
+            this.InitializeComponent();
+            VersionTextBlock.Text = Package.Current.Id.Version.ToFormattedString();
+        }
+    }
+}
