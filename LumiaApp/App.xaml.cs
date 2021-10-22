@@ -2,6 +2,8 @@
 using Windows.UI.Xaml;
 using RegistryRT;
 using AdvancedInfoRT;
+using Windows.UI.Popups;
+using System;
 
 namespace LumiaApp
 {
@@ -12,6 +14,7 @@ namespace LumiaApp
     {
         public static Registry Registry { get; } = new Registry();
         public static AIRT AIRT { get; } = new AIRT();
+        public static GlanceScreen.SettingsModel GlanceViewModel { get; } = new GlanceScreen.SettingsModel();
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -20,8 +23,15 @@ namespace LumiaApp
         public App()
         {
             this.InitializeComponent();
+            this.UnhandledException += App_UnhandledException;
             Registry.InitNTDLLEntryPoints();
             AIRT.InitNTDLLEntryPoints();
+        }
+
+        private async void App_UnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+            await new MessageDialog(e.Exception.StackTrace, e.Exception.Message).ShowAsync();
         }
 
         /// <summary>

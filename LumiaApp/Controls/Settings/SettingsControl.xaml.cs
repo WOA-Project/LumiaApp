@@ -31,12 +31,13 @@ namespace LumiaApp.Controls.Settings
         public SettingsControl()
         {
             this.InitializeComponent();
-            MenuItems.Add(SettingsMenuItem.Create("AdvancedInfo", "Advanced Info", "\uE90D", typeof(AdvancedInfoPage)));
-            MenuItems.Add(SettingsMenuItem.Create("ColorProfile", "Color Profile", "\uE90D", typeof(AdvancedInfoPage)));
-            MenuItems.Add(SettingsMenuItem.Create("GesturesAndTouch", "Gestures & Touch", "\uE90D", typeof(AdvancedInfoPage)));
-            MenuItems.Add(SettingsMenuItem.Create("GlanceScreen", "Glance Screen", "\uE90D", typeof(AdvancedInfoPage)));
-            MenuItems.Add(SettingsMenuItem.Create("USBFunctionMode", "USB Function Mode", "\uE90D", typeof(AdvancedInfoPage)));
-            MenuItems.Add(SettingsMenuItem.Create("Vibration", "Vibration", "\uE90D", typeof(AdvancedInfoPage)));
+            // TODO: Update pages
+            MenuItems.Add(SettingsMenuItem.Create("AdvancedInfo", "Advanced Info", "\uE90D", typeof(AdvancedInfo.Pages.MainInformationPage)));
+            MenuItems.Add(SettingsMenuItem.Create("ColorProfile", "Color Profile", "\uE90D", typeof(ColorProfile.MainPage)));
+            MenuItems.Add(SettingsMenuItem.Create("GesturesAndTouch", "Gestures & Touch", "\uE90D", typeof(GesturesTouch.MainPage)));
+            MenuItems.Add(SettingsMenuItem.Create("GlanceScreen", "Glance Screen", "\uE90D", typeof(GlanceScreen.MainPage)));
+            MenuItems.Add(SettingsMenuItem.Create("USBFunctionMode", "USB Function Mode", "\uE90D", typeof(USBFunctionMode.MainPage)));
+            MenuItems.Add(SettingsMenuItem.Create("Vibration", "Vibration", "\uE90D", typeof(Vibration.MainPage)));
         }
 
         private void NavView_SelectionChanged(MUXC.NavigationView sender, MUXC.NavigationViewSelectionChangedEventArgs args)

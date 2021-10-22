@@ -1,0 +1,148 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:GlanceScreen">
+    <Style x:Key="SubtleTextBlockStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#FFA7A9AB" />
+        <Setter Property="IsColorFontEnabled" Value="False" />
+    </Style>
+    <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    <local:StringNullOrEmptyToVisibilityConverter x:Key="StringNullOrEmptyToVisibilityConverter" />
+    <local:BooleanToOpacityConverter x:Key="BooleanToOpacityConverter" />
+    <SolidColorBrush x:Key="BaseWhiteBrush" Color="{StaticResource SystemChromeWhiteColor}" />
+    <SolidColorBrush x:Key="BaseBlackBrush" Color="{StaticResource SystemChromeBlackHighColor}" />
+    <Style x:Key="TimeTextStyle" BasedOn="{StaticResource HeaderTextBlockStyle}" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+        <Setter Property="FontSize" Value="72" />
+        <Setter Property="LineHeight" Value="80" />
+    </Style>
+    <Style x:Key="LockScreenText" TargetType="TextBlock">
+        <Setter Property="IsColorFontEnabled" Value="False" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontWeight" Value="Light" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="TextLineBounds" Value="Tight" />
+        <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+    </Style>
+    <Style x:Key="DateTextStyle" BasedOn="{StaticResource TitleTextBlockStyle}" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="LineHeight" Value="28" />
+        <Setter Property="Margin" Value="0,-4,0,0" />
+        <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+        <!--<Setter Property="StylisticSet20" Value="True" />
+        <Setter Property="DiscretionaryLigatures" Value="True" />
+        <Setter Property="CaseSensitiveForms" Value="True" />-->
+    </Style>
+    <Style x:Key="AlarmsIconStyle" TargetType="Image">
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Stretch" Value="UniformToFill" />
+    </Style>
+    <Style x:Key="BadgeIconSmallStyle" TargetType="Image">
+        <Setter Property="Margin" Value="0,0,4,0" />
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Height" Value="16" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="AlarmsIconPanelSmallStyle" TargetType="Grid">
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Margin" Value="8,27,0,0" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+    <Style x:Key="AlarmsIconPanelExLargeStyle" TargetType="Grid">
+        <Setter Property="Width" Value="24" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+    <Style x:Key="DetailTextBaseStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="LineHeight" Value="20" />
+        <Setter Property="TextTrimming" Value="Clip" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="FontWeight" Value="Normal" />
+    </Style>
+    <Style x:Key="DetailTextSmallStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}" />
+    <Style x:Key="BadgeIconLargeStyle" TargetType="Image">
+        <Setter Property="Margin" Value="0,0,8,0" />
+        <Setter Property="Width" Value="24" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="DetailTextLargeStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="LineHeight" Value="24" />
+        <Setter Property="TextTrimming" Value="WordEllipsis" />
+    </Style>
+    <Style x:Key="DetailTextMediumStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}">
+        <Setter Property="TextTrimming" Value="WordEllipsis" />
+    </Style>
+    <Style x:Key="DetailTextExLargeStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="LineHeight" Value="28" />
+        <Setter Property="FontWeight" Value="SemiLight" />
+        <Setter Property="TextTrimming" Value="WordEllipsis" />
+    </Style>
+    <Style x:Key="SecureGestureTextMediumStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="TextTrimming" Value="Clip" />
+    </Style>
+    <Style x:Key="SecureGestureTextLargeStyle" BasedOn="{StaticResource SubtitleTextBlockStyle}" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="TextTrimming" Value="Clip" />
+    </Style>
+    <Style x:Key="SecureGestureTextExLargeStyle" BasedOn="{StaticResource TitleTextBlockStyle}" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="TextTrimming" Value="Clip" />
+    </Style>
+    <Style x:Key="StatusProviderSmallImageStyle" TargetType="Image">
+        <Setter Property="Width" Value="16" />
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Margin" Value="28,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="StatusProviderLargeImageStyle" TargetType="Image">
+        <Setter Property="Width" Value="24" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="Margin" Value="32,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="BadgeTextSmallStyle" BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+        <Setter Property="MaxLines" Value="1" />
+        <Setter Property="Width" Value="28" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="TextTrimming" Value="Clip" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="BadgePanelStyle" TargetType="StackPanel">
+        <Setter Property="Margin" Value="0,0,8,0" />
+        <Setter Property="MinHeight" Value="20" />
+        <Setter Property="MinWidth" Value="48" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+    <Style x:Key="BadgeTextMediumStyle" BasedOn="{StaticResource BadgeTextSmallStyle}" TargetType="TextBlock" />
+    <Style x:Key="BadgeTextLargeStyle" BasedOn="{StaticResource SubtitleTextBlockStyle}" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+        <Setter Property="MaxLines" Value="1" />
+        <Setter Property="Width" Value="44" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="TextTrimming" Value="Clip" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="BadgeTextExLargeStyle" BasedOn="{StaticResource TitleTextBlockStyle}" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+        <Setter Property="MaxLines" Value="1" />
+        <Setter Property="Width" Value="48" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="TextTrimming" Value="Clip" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+</ResourceDictionary>

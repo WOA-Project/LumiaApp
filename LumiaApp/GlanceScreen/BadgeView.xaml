@@ -1,0 +1,90 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GlanceScreen"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Class="GlanceScreen.BadgeView">
+    <UserControl.Resources>
+        <Storyboard x:Name="BadgeStoryboard" x:Key="BadgeStoryboard">
+            <Storyboard.Children>
+                <DoubleAnimationUsingKeyFrames Duration="0:0:3" Storyboard.TargetName="TextBlockTransform" Storyboard.TargetProperty="(TranslateTransform.Y)">
+                    <DoubleAnimationUsingKeyFrames.KeyFrames>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-10">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <CubicEase EasingMode="EaseOut" />
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                        <EasingDoubleKeyFrame KeyTime="1" Value="0">
+                            <EasingDoubleKeyFrame.EasingFunction>
+                                <BounceEase Bounces="1" />
+                            </EasingDoubleKeyFrame.EasingFunction>
+                        </EasingDoubleKeyFrame>
+                    </DoubleAnimationUsingKeyFrames.KeyFrames>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard.Children>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Content>
+        <Grid x:Name="BadgeRootLayout">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup>
+                    <VisualStateGroup.States>
+                        <VisualState x:Name="layout2">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="601" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="BadgeText.Style" Value="{StaticResource BadgeTextMediumStyle}" />
+                                <Setter Target="BadgePanel.MinWidth" Value="56" />
+                                <Setter Target="GlyphTextPanel.Width" Value="36" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="layout3">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1367" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="BadgeText.Style" Value="{StaticResource BadgeTextLargeStyle}" />
+                                <Setter Target="BadgeIcon.Style" Value="{StaticResource BadgeIconLargeStyle}" />
+                                <Setter Target="BadgeGlyph.Style" Value="{StaticResource BadgeIconLargeStyle}" />
+                                <Setter Target="BadgePanel.MinWidth" Value="72" />
+                                <Setter Target="BadgePanel.Margin" Value="0,0,12,0" />
+                                <Setter Target="GlyphTextPanel.Width" Value="40" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="layout4">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="1921" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="BadgeText.Style" Value="{StaticResource BadgeTextLargeStyle}" />
+                                <Setter Target="BadgeIcon.Style" Value="{StaticResource BadgeIconLargeStyle}" />
+                                <Setter Target="BadgeGlyph.Style" Value="{StaticResource BadgeIconLargeStyle}" />
+                                <Setter Target="BadgePanel.MinWidth" Value="80" />
+                                <Setter Target="BadgePanel.Margin" Value="0,0,12,0" />
+                                <Setter Target="GlyphTextPanel.MinWidth" Value="48" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup.States>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Grid.Children>
+                <StackPanel x:Name="BadgePanel" Orientation="Horizontal" Tag="BadgePanel" Style="{StaticResource BadgePanelStyle}">
+                    <StackPanel.RenderTransform>
+                        <TranslateTransform x:Name="TextBlockTransform" X="0" Y="0" />
+                    </StackPanel.RenderTransform>
+                    <StackPanel.Children>
+                        <Image x:Name="BadgeIcon" Tag="BadgeIcon" Style="{StaticResource BadgeIconSmallStyle}" AutomationProperties.AccessibilityView="Raw" />
+                        <Grid x:Name="GlyphTextPanel" Width="28">
+                            <Grid.Children>
+                                <TextBlock x:Name="BadgeText" Tag="BadgeText" Style="{StaticResource BadgeTextSmallStyle}" AutomationProperties.AccessibilityView="Raw" />
+                                <Image x:Name="BadgeGlyph" Tag="BadgeGlyph" Style="{StaticResource BadgeIconSmallStyle}" AutomationProperties.AccessibilityView="Raw" />
+                            </Grid.Children>
+                        </Grid>
+                    </StackPanel.Children>
+                </StackPanel>
+            </Grid.Children>
+        </Grid>
+    </UserControl.Content>
+</UserControl>

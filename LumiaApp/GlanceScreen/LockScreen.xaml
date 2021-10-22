@@ -1,0 +1,171 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:GlanceScreen"
+             x:Class="GlanceScreen.LockScreen"
+             x:Name="MainPageContainer"
+             RequestedTheme="Dark">
+    <UserControl.Resources>
+        <local:IntegerHigherThanNilToBooleanConverter x:Key="IntegerHigherThanNilToBooleanConverter" />
+        <local:IntegerIsFourToBooleanConverter x:Key="IntegerIsFourToBooleanConverter" />
+        <local:IntegerIsNotFourToBooleanConverter x:Key="IntegerIsNotFourToBooleanConverter" />
+        
+        <SolidColorBrush x:Key="BaseWhiteBrush" Color="{StaticResource SystemChromeWhiteColor}" />
+        <Style x:Key="TimeTextStyle" BasedOn="{StaticResource HeaderTextBlockStyle}" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+            <Setter Property="FontSize" Value="72" />
+            <Setter Property="LineHeight" Value="80" />
+        </Style>
+        <Style x:Key="DateTextStyle" BasedOn="{StaticResource TitleTextBlockStyle}" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="LineHeight" Value="28" />
+            <Setter Property="Margin" Value="0,-4,0,0" />
+            <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+        </Style>
+        <Style x:Key="DetailTextBaseStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
+            <Setter Property="TextWrapping" Value="NoWrap" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="LineHeight" Value="20" />
+            <Setter Property="TextTrimming" Value="Clip" />
+            <Setter Property="IsHitTestVisible" Value="False" />
+            <Setter Property="FontWeight" Value="Normal" />
+        </Style>
+        <Style x:Key="DetailTextSmallStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}" />
+        <Style x:Key="DetailTextLargeStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="LineHeight" Value="24" />
+            <Setter Property="TextTrimming" Value="WordEllipsis" />
+        </Style>
+        <Style x:Key="DetailTextMediumStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}">
+            <Setter Property="TextTrimming" Value="WordEllipsis" />
+        </Style>
+        <Style x:Key="DetailTextExLargeStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="LineHeight" Value="28" />
+            <Setter Property="FontWeight" Value="SemiLight" />
+            <Setter Property="TextTrimming" Value="WordEllipsis" />
+        </Style>
+        <Style x:Key="AlarmsIconPanelSmallStyle" TargetType="Grid">
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Margin" Value="8,27,0,0" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+        <Style x:Key="AlarmsIconPanelExLargeStyle" TargetType="Grid">
+            <Setter Property="Width" Value="24" />
+            <Setter Property="Height" Value="24" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+    </UserControl.Resources>
+    <Grid x:Name="LockRootGrid" HorizontalAlignment="Stretch" x:Load="{x:Bind ViewModel.Mode, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualStateGroup.States>
+                    <VisualState x:Name="layout2">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="601" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="Time.FontSize" Value="96" />
+                            <Setter Target="Time.LineHeight" Value="120" />
+                            <Setter Target="AlarmsIconPanel.Margin" Value="8,36,0,0" />
+                            <Setter Target="Date.FontSize" Value="46" />
+                            <Setter Target="Date.LineHeight" Value="56" />
+                            <Setter Target="Date.Margin" Value="0,-12,0,0" />
+                            <Setter Target="Detail1.Style" Value="{StaticResource DetailTextMediumStyle}" />
+                            <Setter Target="DetailTextPanel.Margin" Value="0,40,0,0" />
+                            <Setter Target="DetailTextPanel.MaxWidth" Value="548" />
+                            <Setter Target="StatusProviderPanel.Visibility" Value="Visible" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="layout3">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="1367" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="Time.FontSize" Value="128" />
+                            <Setter Target="Time.LineHeight" Value="140" />
+                            <Setter Target="AlarmsIconPanel.Margin" Value="12,48,0,0" />
+                            <Setter Target="AlarmsIconPanel.Style" Value="{StaticResource AlarmsIconPanelExLargeStyle}" />
+                            <Setter Target="Date.FontSize" Value="56" />
+                            <Setter Target="Date.LineHeight" Value="64" />
+                            <Setter Target="Date.Margin" Value="0,-20,0,0" />
+                            <Setter Target="Detail1.Style" Value="{StaticResource DetailTextLargeStyle}" />
+                            <Setter Target="DetailTextPanel.Margin" Value="0,40,0,0" />
+                            <Setter Target="DetailTextPanel.MaxWidth" Value="600" />
+                            <Setter Target="LockScreenTextBadgeContent.Margin" Value="36,36,36,0" />
+                            <Setter Target="BadgeAndStatusContainer.Margin" Value="0,36,0,34" />
+                            <Setter Target="BadgeAndStatusContainer.MinHeight" Value="28" />
+                            <Setter Target="NetworkStatusProvider.Margin" Value="32,0,0,0" />
+                            <Setter Target="NetworkStatusProvider.FontSize" Value="24" />
+                            <Setter Target="BatteryStatusProvider.Margin" Value="32,0,0,0" />
+                            <Setter Target="BatteryStatusProvider.FontSize" Value="24" />
+                            <Setter Target="StatusProviderPanel.Visibility" Value="Visible" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="layout4">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="1921" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="Time.FontSize" Value="156" />
+                            <Setter Target="Time.LineHeight" Value="180" />
+                            <Setter Target="AlarmsIconPanel.Margin" Value="12,60,0,0" />
+                            <Setter Target="AlarmsIconPanel.Style" Value="{StaticResource AlarmsIconPanelExLargeStyle}" />
+                            <Setter Target="Date.FontSize" Value="64" />
+                            <Setter Target="Date.LineHeight" Value="76" />
+                            <Setter Target="Date.Margin" Value="0,-28,0,0" />
+                            <Setter Target="Detail1.Style" Value="{StaticResource DetailTextExLargeStyle}" />
+                            <Setter Target="DetailTextPanel.Margin" Value="0,96,0,0" />
+                            <Setter Target="DetailTextPanel.MaxWidth" Value="720" />
+                            <Setter Target="LockScreenTextBadgeContent.Margin" Value="72,72,72,0" />
+                            <Setter Target="BadgeAndStatusContainer.Margin" Value="0,72,0,68" />
+                            <Setter Target="BadgeAndStatusContainer.MinHeight" Value="32" />
+                            <Setter Target="NetworkStatusProvider.Margin" Value="32,0,0,0" />
+                            <Setter Target="NetworkStatusProvider.FontSize" Value="24" />
+                            <Setter Target="BatteryStatusProvider.Margin" Value="32,0,0,0" />
+                            <Setter Target="BatteryStatusProvider.FontSize" Value="24" />
+                            <Setter Target="StatusProviderPanel.Visibility" Value="Visible" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup.States>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Image Stretch="UniformToFill" Source="{x:Bind BgImage, Mode=OneWay}" x:Name="ImageCtrl" x:Load="{x:Bind ViewModel.BackgroundPhoto, Mode=OneWay}" />
+        <StackPanel x:Name="LockScreenTextBadgeContent" Margin="24,24,24,0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Tag="LockTextAndBadges">
+            <StackPanel x:Name="TimePanel" Orientation="Horizontal">
+                <TextBlock x:Name="Time" Style="{StaticResource TimeTextStyle}" Tag="TimeText" Text="{x:Bind TimeStr, Mode=OneWay}" />
+                <Grid x:Name="AlarmsIconPanel" Style="{StaticResource AlarmsIconPanelSmallStyle}">
+                    <Image x:Name="AlarmsIconImage" AutomationProperties.Name="Alarms" Width="16" Height="16" />
+                </Grid>
+            </StackPanel>
+            <TextBlock x:Load="{x:Bind ViewModel.Date, Mode=OneWay}" x:Name="Date" Style="{StaticResource DateTextStyle}" Tag="DateText" HorizontalAlignment="Left" Text="{x:Bind DateStr, Mode=OneWay}"/>
+            <ListView x:Load="{x:Bind ViewModel.DetailedAppStatus, Mode=OneWay}" x:Name="DetailTextPanel" Margin="0,32,-24,0" HorizontalAlignment="Left" Tag="DetailTextPanel" ItemsSource="{x:Bind LockScreenInfo.DetailText, Mode=OneWay}" SelectionMode="None">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Margin" Value="0" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock x:Name="Detail1" Style="{StaticResource DetailTextSmallStyle}" Tag="DetailText" Text="{Binding}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid x:Name="BadgeAndStatusContainer" Margin="0,24,0,22" MinHeight="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="BadgeContainer" Tag="BadgeContainer" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" x:Load="{x:Bind ViewModel.NotificationIcons, Mode=OneWay}" />
+                <StackPanel x:Name="StatusProviderPanel" VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="1">
+                    <TextBlock x:Name="NetworkStatusProvider" AutomationProperties.Name="Network" Text="&#xF384;" FontSize="16" Margin="28,0,0,0" VerticalAlignment="Center" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                    <TextBlock x:Name="BatteryStatusProvider" AutomationProperties.Name="Battery" Text="&#xEBB0;" FontSize="16" Margin="28,0,0,0" VerticalAlignment="Center" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

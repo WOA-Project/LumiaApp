@@ -121,9 +121,29 @@
     <Compile Include="AdvancedInfoPage.xaml.cs">
       <DependentUpon>AdvancedInfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdvancedInfo\ContentDialogs\NotEnoughRights.xaml.cs">
+      <DependentUpon>NotEnoughRights.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedInfo\ContentDialogs\SomethingHappened.xaml.cs">
+      <DependentUpon>SomethingHappened.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedInfo\Extensions\VisualTreeHelperExtensions.cs" />
+    <Compile Include="AdvancedInfo\Handlers\DPPHandler.cs" />
+    <Compile Include="AdvancedInfo\Handlers\InternalHandler.cs" />
+    <Compile Include="AdvancedInfo\Handlers\ModemHandler.cs" />
+    <Compile Include="AdvancedInfo\Handlers\RegistryHandler.cs" />
+    <Compile Include="AdvancedInfo\Pages\MainInformationPage.xaml.cs">
+      <DependentUpon>MainInformationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ColorProfile\Converters.cs" />
+    <Compile Include="ColorProfile\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorProfile\Profiles.cs" />
+    <Compile Include="ColorProfile\SettingsModel.cs" />
     <Compile Include="Controls\Settings\SettingExpander\SettingExpander.cs" />
     <Compile Include="Controls\Settings\SettingsControl.xaml.cs">
       <DependentUpon>SettingsControl.xaml</DependentUpon>
@@ -136,9 +156,39 @@
     </Compile>
     <Compile Include="Controls\Settings\SettingsThemeResources.cs" />
     <Compile Include="Controls\Settings\Setting\Setting.cs" />
+    <Compile Include="GesturesAndTouch\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GesturesAndTouch\SettingsModel.cs" />
+    <Compile Include="GlanceScreen\BadgeView.xaml.cs">
+      <DependentUpon>BadgeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GlanceScreen\Converters.cs" />
+    <Compile Include="GlanceScreen\LockInfo.cs" />
+    <Compile Include="GlanceScreen\LockScreen.xaml.cs">
+      <DependentUpon>LockScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GlanceScreen\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Settings\Legacy\SettingsBlockControl.xaml.cs">
+      <DependentUpon>SettingsBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Settings\Legacy\SettingsDisplayControl.xaml.cs">
+      <DependentUpon>SettingsDisplayControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GlanceScreen\SettingsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Settings\Legacy\Converters.cs" />
+    <Compile Include="USBFunctionMode\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="USBFunctionMode\USBFNController.cs" />
+    <Compile Include="Vibration\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +274,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AdvancedInfo\ContentDialogs\NotEnoughRights.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdvancedInfo\ContentDialogs\SomethingHappened.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdvancedInfo\Pages\MainInformationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ColorProfile\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\Settings\SettingsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -237,6 +303,34 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Settings\Setting\Setting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GesturesAndTouch\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GlanceScreen\BadgeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GlanceScreen\LockScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GlanceScreen\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Settings\Legacy\SettingsBlockControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Settings\Legacy\SettingsDisplayControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GlanceScreen\StandardStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -268,12 +362,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="USBFunctionMode\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vibration\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.13</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
+      <Version>7.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Animations">
       <Version>7.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
@@ -292,6 +397,15 @@
       <Project>{84a7225c-2daf-410d-ab85-282ab220a89f}</Project>
       <Name>RegistryRT</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GlanceScreen\lockframework.winmd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="lockframework, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>GlanceScreen\lockframework.winmd</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
