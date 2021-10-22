@@ -58,28 +58,20 @@
                 Background="Transparent"
                 Canvas.ZIndex="1"
                 IsHitTestVisible="True">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+            <StackPanel x:Name="AppTitleAndIcon" Orientation="Horizontal">
+                <Image x:Name="AppFontIcon"
+                       Width="22"
+                       Height="22"
+                       Margin="0,0,10,0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Source="ms-appx:///Assets/Square44x44Logo.png" />
 
-                <StackPanel x:Name="AppTitleAndIcon" Orientation="Horizontal">
-                    <Image x:Name="AppFontIcon"
-                           Width="22"
-                           Height="22"
-                           Margin="0,0,10,0"
-                           HorizontalAlignment="Center"
+                <TextBlock x:Name="AppTitle"
                            VerticalAlignment="Center"
-                           Source="ms-appx:///Assets/Square44x44Logo.png" />
-
-                    <TextBlock x:Name="AppTitle"
-                               VerticalAlignment="Center"
-                               Style="{StaticResource CaptionTextBlockStyle}"
-                               Text="{x:Bind GetAppTitleFromSystem()}" />
-                </StackPanel>
-            </Grid>
+                           Style="{StaticResource CaptionTextBlockStyle}"
+                           Text="{x:Bind GetAppTitleFromSystem()}" />
+            </StackPanel>
         </Border>
 
         <settings:SettingsControl x:Name="NavigationViewControl"
