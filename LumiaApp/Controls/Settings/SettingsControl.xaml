@@ -24,13 +24,11 @@
         </DataTemplate>
     </controls:NavigationView.MenuItemTemplate>
 
-    <Grid>
-        <Frame x:Name="SelectedSettings">
-            <Frame.ContentTransitions>
-                <TransitionCollection>
-                    <PopupThemeTransition />
-                </TransitionCollection>
-            </Frame.ContentTransitions>
-        </Frame>
-    </Grid>
+    <Frame x:Name="SelectedSettings">
+        <Frame.ContentTransitions>
+            <TransitionCollection>
+                <PopupThemeTransition />
+            </TransitionCollection>
+        </Frame.ContentTransitions>
+    </Frame>
 </controls:NavigationView>
