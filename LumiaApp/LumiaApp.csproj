@@ -149,18 +149,9 @@
     </Compile>
     <Compile Include="Pages\ColorProfile\Profiles.cs" />
     <Compile Include="Pages\ColorProfile\SettingsModel.cs" />
-    <Compile Include="Controls\Settings\SettingExpander\SettingExpander.cs" />
     <Compile Include="Controls\Settings\SettingsControl.xaml.cs">
       <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Settings\SettingsGroup\SettingsGroup.cs" />
-    <Compile Include="Controls\Settings\SettingsGroup\SettingsGroupAutomationPeer.cs" />
-    <Compile Include="Controls\Settings\SettingsPageControl\PageLink.cs" />
-    <Compile Include="Controls\Settings\SettingsPageControl\SettingsPageControl.xaml.cs">
-      <DependentUpon>SettingsPageControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Settings\SettingsThemeResources.cs" />
-    <Compile Include="Controls\Settings\Setting\Setting.cs" />
     <Compile Include="Pages\GesturesAndTouch\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -303,18 +294,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Settings\SettingsGroup\SettingsGroup.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Settings\SettingsPageControl\SettingsPageControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Settings\Setting\Setting.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\GesturesAndTouch\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -344,30 +323,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\SettingsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\Button.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\TextBlock.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Colors.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\Settings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\SettingsExpanderStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -404,6 +359,10 @@
     <ProjectReference Include="..\AdvancedInfoRT\AdvancedInfoRT.vcxproj">
       <Project>{30ed377d-d3bc-4b52-bff9-048cb907383f}</Project>
       <Name>AdvancedInfoRT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Microsoft.PowerToys.Settings.UI\Microsoft.PowerToys.Settings.UI.csproj">
+      <Project>{123d7523-1b05-4c05-a2fa-6a14314a16f3}</Project>
+      <Name>Microsoft.PowerToys.Settings.UI</Name>
     </ProjectReference>
     <ProjectReference Include="..\RegistryRT\RegistryRT.vcxproj">
       <Project>{84a7225c-2daf-410d-ab85-282ab220a89f}</Project>

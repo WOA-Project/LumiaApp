@@ -7,7 +7,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Automation;
 using Windows.UI.Xaml.Controls;
 
-namespace LumiaApp.Controls.Settings
+namespace Microsoft.PowerToys.Settings.UI.Controls
 {
     [TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
     [TemplateVisualState(Name = "Disabled", GroupName = "CommonStates")]

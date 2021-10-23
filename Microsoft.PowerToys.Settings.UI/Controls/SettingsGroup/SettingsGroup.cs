@@ -7,7 +7,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Automation.Peers;
 using Windows.UI.Xaml.Controls;
 
-namespace LumiaApp.Controls.Settings
+namespace Microsoft.PowerToys.Settings.UI.Controls
 {
     /// <summary>
     /// Represents a control that can contain multiple settings (or other) controls

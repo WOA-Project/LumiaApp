@@ -8,7 +8,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <SettingsThemeResources xmlns="using:LumiaApp.Controls.Settings" />
+                <SettingsThemeResources xmlns="using:Microsoft.PowerToys.Settings.UI" />
                 <ResourceDictionary>
                     <ResourceDictionary.ThemeDictionaries>
                         <ResourceDictionary x:Key="Light">

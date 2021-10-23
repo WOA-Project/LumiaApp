@@ -6,7 +6,7 @@ using Microsoft.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Automation;
 
-namespace LumiaApp.Controls.Settings
+namespace Microsoft.PowerToys.Settings.UI.Controls
 {
     public partial class SettingExpander : Expander
     {

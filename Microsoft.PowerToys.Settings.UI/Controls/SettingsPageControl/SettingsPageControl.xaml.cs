@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace LumiaApp.Controls.Settings
+namespace Microsoft.PowerToys.Settings.UI.Controls
 {
     public sealed partial class SettingsPageControl : UserControl
     {

@@ -5,7 +5,7 @@
 using System;
 using Windows.UI.Xaml;
 
-namespace LumiaApp.Controls.Settings
+namespace Microsoft.PowerToys.Settings.UI.Controls
 {
     public class PageLink
     {
@@ -13,7 +13,7 @@ namespace LumiaApp.Controls.Settings
 
         public Uri Link { get; set; }
 
-        public event RoutedEventHandler? Click;
+        public event RoutedEventHandler Click;
 
         public void OnClick(object s, RoutedEventArgs e)
         {

@@ -4,7 +4,7 @@
 
 using Windows.UI.Xaml.Automation.Peers;
 
-namespace LumiaApp.Controls.Settings
+namespace Microsoft.PowerToys.Settings.UI.Controls
 {
     public class SettingsGroupAutomationPeer : FrameworkElementAutomationPeer
     {
