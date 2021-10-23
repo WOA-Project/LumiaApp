@@ -9,6 +9,7 @@ using Windows.System.Profile;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using muxc = Microsoft.UI.Xaml.Controls;
+using AdvancedInfo.Handlers;
 
 namespace LumiaApp
 {
@@ -94,7 +95,7 @@ namespace LumiaApp
 
         private void OnPaneDisplayModeChanged(DependencyObject sender, DependencyProperty dp)
         {
-            var navigationView = sender as muxc.NavigationView;
+            muxc.NavigationView navigationView = sender as muxc.NavigationView;
             AppTitleBar.Visibility = navigationView.PaneDisplayMode == muxc.NavigationViewPaneDisplayMode.Top ? Visibility.Collapsed : Visibility.Visible;
         }
 
@@ -119,7 +120,7 @@ namespace LumiaApp
 
         private void SetDeviceFamily()
         {
-            var familyName = AnalyticsInfo.VersionInfo.DeviceFamily;
+            string familyName = AnalyticsInfo.VersionInfo.DeviceFamily;
 
             if (!Enum.TryParse(familyName.Replace("Windows.", string.Empty), out DeviceType parsedDeviceType))
             {
@@ -203,6 +204,17 @@ namespace LumiaApp
             // remove the solid-colored backgrounds behind the caption controls and system back button if we are in left mode
             // This is done when the app is loaded since before that the actual theme that is used is not "determined" yet
             UpdateTitleBar(true);
+
+            try
+            {
+                RegistryHandler reghandler = new();
+                TitleBlock.Text = $"{reghandler.Manufacturer} {reghandler.ModelName}";
+                SubtitleBlock.Text = reghandler.ProductCodeCleaned;
+            }
+            catch
+            {
+
+            }
         }
     }
 }

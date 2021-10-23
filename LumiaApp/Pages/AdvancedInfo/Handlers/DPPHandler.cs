@@ -18,7 +18,7 @@ namespace AdvancedInfo.Handlers
 
         public static async Task<DPPHandler> LoadHandlerAsync()
         {
-            var handler = new DPPHandler();
+            DPPHandler handler = new();
             await handler.Load();
             return handler;
         }
@@ -77,7 +77,7 @@ namespace AdvancedInfo.Handlers
                     StorageFile NPC = await Certs.GetFileAsync("npc");
 
                     IRandomAccessStreamWithContentType npcStream = await NPC.OpenReadAsync();
-                    using (BinaryReader br = new BinaryReader(npcStream.AsStreamForRead()))
+                    using (BinaryReader br = new(npcStream.AsStreamForRead()))
                     {
                         br.BaseStream.Seek(0xA0, SeekOrigin.Begin);
                         string[] imeielements = BitConverter.ToString(br.ReadBytes(0x8)).Split('-');

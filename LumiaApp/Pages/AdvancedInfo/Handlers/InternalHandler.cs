@@ -5,13 +5,10 @@ namespace AdvancedInfo.Handlers
 {
     public class InternalHandler
     {
-        private AIRT airt;
+        private AIRT airt => LumiaApp.App.AIRT;
 
         public InternalHandler()
         {
-            airt = new AIRT();
-            airt.InitNTDLLEntryPoints();
-
             long RAMVal;
             bool result = airt.GetSystemRAM(out RAMVal);
 

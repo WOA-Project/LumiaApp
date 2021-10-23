@@ -32,13 +32,13 @@ namespace LumiaApp.Controls.Settings
         {
             this.InitializeComponent();
             // TODO: Update pages
-            MenuItems.Add(SettingsMenuItem.Create("AdvancedInfo", "Advanced Info", "\uE90D", typeof(AdvancedInfo.Pages.MainInformationPage)));
-            MenuItems.Add(SettingsMenuItem.Create("ColorProfile", "Color Profile", "\uE90D", typeof(ColorProfile.MainPage)));
-            MenuItems.Add(SettingsMenuItem.Create("GesturesAndTouch", "Gestures & Touch", "\uE90D", typeof(GesturesTouch.MainPage)));
-            MenuItems.Add(SettingsMenuItem.Create("GlanceScreen", "Glance Screen", "\uE90D", typeof(GlanceScreen.MainPage)));
-            MenuItems.Add(SettingsMenuItem.Create("USBFunctionMode", "USB Function Mode", "\uE90D", typeof(USBFunctionMode.MainPage)));
-            MenuItems.Add(SettingsMenuItem.Create("Vibration", "Vibration", "\uE90D", typeof(Vibration.MainPage)));
-            FooterMenuItems.Add(SettingsMenuItem.Create("About", "About", "\uE90D", typeof(LumiaApp.Pages.AboutPage)));
+            MenuItems.Add(SettingsMenuItem.Create("AdvancedInfo", "Advanced Info", "\uEE64", typeof(AdvancedInfoPage)));
+            MenuItems.Add(SettingsMenuItem.Create("ColorProfile", "Color Profile", "\uE790", typeof(ColorProfile.MainPage)));
+            MenuItems.Add(SettingsMenuItem.Create("GesturesAndTouch", "Gestures & Touch", "\uEDA4", typeof(GesturesTouch.MainPage)));
+            MenuItems.Add(SettingsMenuItem.Create("GlanceScreen", "Glance Screen", "\uEE65", typeof(GlanceScreen.MainPage)));
+            MenuItems.Add(SettingsMenuItem.Create("USBFunctionMode", "USB Function Mode", "\uECF0", typeof(USBFunctionMode.MainPage)));
+            MenuItems.Add(SettingsMenuItem.Create("Vibration", "Vibration", "\uE877", typeof(Vibration.MainPage)));
+            FooterMenuItems.Add(SettingsMenuItem.Create("About", "About", "\uE946", typeof(LumiaApp.Pages.AboutPage)));
         }
 
         private void NavView_SelectionChanged(MUXC.NavigationView sender, MUXC.NavigationViewSelectionChangedEventArgs args)

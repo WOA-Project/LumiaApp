@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RegistryRT;
 
 namespace GesturesTouch
@@ -12,7 +8,7 @@ namespace GesturesTouch
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Registry registry = new Registry();
+        private Registry registry => LumiaApp.App.Registry;
 
         private const string RegPath1 = @"SOFTWARE\OEM\Nokia\Touch\Improved";
         private const string RegPath2 = @"SOFTWARE\OEM\Nokia\Touch\WakeupGesture";
@@ -21,7 +17,7 @@ namespace GesturesTouch
 
         public SettingsModel()
         {
-            registry.InitNTDLLEntryPoints();
+
         }
 
         public void RefreshEverything()

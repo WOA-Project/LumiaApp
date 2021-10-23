@@ -7,14 +7,14 @@ namespace USBFunctionMode
 {
     public class USBFNController
     {
-        private Registry reg = new Registry();
+        private Registry reg => LumiaApp.App.Registry;
 
         public USBFNController()
         {
-            reg.InitNTDLLEntryPoints();
+
         }
 
-        public static USBFNController Instance => new USBFNController();
+        public static USBFNController Instance => new();
 
         private static string GetUSBFNLocation()
         {

@@ -124,20 +124,13 @@
     <Compile Include="Pages\AdvancedInfoPage.xaml.cs">
       <DependentUpon>AdvancedInfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AdvancedInfo\ContentDialogs\NotEnoughRights.xaml.cs">
-      <DependentUpon>NotEnoughRights.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\AdvancedInfo\ContentDialogs\SomethingHappened.xaml.cs">
+    <Compile Include="ContentDialogs\SomethingHappened.xaml.cs">
       <DependentUpon>SomethingHappened.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AdvancedInfo\Extensions\VisualTreeHelperExtensions.cs" />
     <Compile Include="Pages\AdvancedInfo\Handlers\DPPHandler.cs" />
     <Compile Include="Pages\AdvancedInfo\Handlers\InternalHandler.cs" />
     <Compile Include="Pages\AdvancedInfo\Handlers\ModemHandler.cs" />
     <Compile Include="Pages\AdvancedInfo\Handlers\RegistryHandler.cs" />
-    <Compile Include="Pages\AdvancedInfo\Pages\MainInformationPage.xaml.cs">
-      <DependentUpon>MainInformationPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -289,15 +282,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AdvancedInfo\ContentDialogs\NotEnoughRights.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\AdvancedInfo\ContentDialogs\SomethingHappened.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\AdvancedInfo\Pages\MainInformationPage.xaml">
+    <Page Include="ContentDialogs\SomethingHappened.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

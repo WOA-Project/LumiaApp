@@ -5,7 +5,7 @@ namespace ColorProfile
 {
     public class Profile
     {
-        private Registry regrt = new Registry();
+        private Registry regrt => LumiaApp.App.Registry;
 
         // Color values
         public double UserSettingColorTargetBlueX { get; set; }
@@ -30,7 +30,7 @@ namespace ColorProfile
 
         public Profile()
         {
-            regrt.InitNTDLLEntryPoints();
+
         }
 
         private void SetValue(string name, double value)
@@ -93,7 +93,7 @@ namespace ColorProfile
 
     public static class Profiles
     {
-        public static Profile Default = new Profile()
+        public static Profile Default = new()
         {
             UserSettingColorTargetBlueX = 0.1805,
             UserSettingColorTargetBlueY = 0.0722,
@@ -115,7 +115,7 @@ namespace ColorProfile
             UserSettingColorSaturationPA = 0x64
         };
 
-        public static Profile Cool = new Profile()
+        public static Profile Cool = new()
         {
             UserSettingColorTargetBlueX = 0.1822,
             UserSettingColorTargetBlueY = 0.0677,
@@ -137,7 +137,7 @@ namespace ColorProfile
             UserSettingColorSaturationPA = 0x64
         };
 
-        public static Profile Vivid = new Profile()
+        public static Profile Vivid = new()
         {
             UserSettingColorTargetBlueX = 0.18305,
             UserSettingColorTargetBlueY = 0.06545,
@@ -161,7 +161,7 @@ namespace ColorProfile
 
         public static Profile GetNightLightProfile(double NightLightValue)
         {
-            Profile prof = new Profile()
+            Profile prof = new()
             {
                 UserSettingColorTargetBlueX = 0.1805,
                 UserSettingColorTargetBlueY = 0.0722,
@@ -191,7 +191,7 @@ namespace ColorProfile
 
         public static Profile GenerateAdvancedProfile(double Temperature, double Tint, double Saturation)
         {
-            Profile prof = new Profile();
+            Profile prof = new();
 
             prof.UserSettingColorSaturationMatrix = 0x64;
             prof.UserSettingColorSaturationPA = 0x64;

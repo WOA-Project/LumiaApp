@@ -17,7 +17,7 @@ namespace ColorProfile
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Registry registry = new Registry();
+        private Registry registry => LumiaApp.App.Registry;
 
         private const string RegPath = @"SOFTWARE\OEM\Nokia\Display\ColorAndLight";
 
@@ -25,7 +25,7 @@ namespace ColorProfile
 
         public SettingsModel()
         {
-            registry.InitNTDLLEntryPoints();
+
         }
 
         public void RefreshEverything()

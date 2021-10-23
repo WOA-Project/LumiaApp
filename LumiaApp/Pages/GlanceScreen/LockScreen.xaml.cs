@@ -1,7 +1,6 @@
 ﻿using lockframework;
 using System;
 using Windows.ApplicationModel.LockScreen;
-using Windows.Storage.Streams;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 

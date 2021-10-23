@@ -12,6 +12,10 @@
     <controls1:SettingsPageControl ModuleDescription="Settings for your Lumia Phone"
                                    ModuleTitle="About"
                                    SecondaryLinksHeader="Links">
+        <controls1:SettingsPageControl.PrimaryLinks>
+            <controls1:PageLink Text="Github Repository" Link="https://github.com/WOA-Project/LumiaApp" />
+            <controls1:PageLink Text="Website" Link="https://woa-project.github.io/LumiaWOA" />
+        </controls1:SettingsPageControl.PrimaryLinks>
         <controls1:SettingsPageControl.ModuleContent>
             <StackPanel Orientation="Vertical">
                 <controls1:SettingsGroup Header="Version">
@@ -30,13 +34,9 @@
                 </controls1:SettingsGroup>
             </StackPanel>
         </controls1:SettingsPageControl.ModuleContent>
-        <controls1:SettingsPageControl.PrimaryLinks>
-            <controls1:PageLink Text="Github Repository" />
-            <controls1:PageLink Text="Website" />
-        </controls1:SettingsPageControl.PrimaryLinks>
         <controls1:SettingsPageControl.SecondaryLinks>
-            <controls1:PageLink Text="Third Party Notices" />
-            <controls1:PageLink Text="License" />
+            <controls1:PageLink Text="Third Party Notices" Link="https://github.com/WOA-Project/LumiaApp/blob/master/THIRD_PARTY.md" />
+            <controls1:PageLink Text="License" Link="https://github.com/WOA-Project/LumiaApp/blob/master/LICENSE" />
         </controls1:SettingsPageControl.SecondaryLinks>
     </controls1:SettingsPageControl>
 </Page>

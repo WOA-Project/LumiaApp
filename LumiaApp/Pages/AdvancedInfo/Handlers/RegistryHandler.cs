@@ -5,13 +5,10 @@ namespace AdvancedInfo.Handlers
 {
     public class RegistryHandler
     {
-        private Registry regrt;
+        private Registry regrt => LumiaApp.App.Registry;
 
         public RegistryHandler()
         {
-            regrt = new Registry();
-            regrt.InitNTDLLEntryPoints();
-
             ProductCode = ReadRegistryStringFromDTI("PhoneManufacturerModelName");
             MobileOperator = ReadRegistryStringFromDTI("PhoneMobileOperatorName");
             ServiceProvider = ReadRegistryStringFromDTI("PhoneMobileOperatorDisplayName");

@@ -86,7 +86,7 @@ namespace GlanceScreen
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Registry registry = new Registry();
+        private Registry registry => LumiaApp.App.Registry;
 
 #if ARM64
         private const string RegPath = @"SOFTWARE\WowAA32Node\OEM\Nokia\lpm";
@@ -98,7 +98,7 @@ namespace GlanceScreen
 
         public SettingsModel()
         {
-            registry.InitNTDLLEntryPoints();
+
         }
 
         public void RefreshEverything()

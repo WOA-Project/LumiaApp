@@ -1,7 +1,4 @@
-﻿using Windows.ApplicationModel.Core;
-using Windows.UI;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace GesturesTouch
@@ -11,15 +8,12 @@ namespace GesturesTouch
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public SettingsModel ViewModel = new SettingsModel();
+        public SettingsModel ViewModel = new();
 
         public MainPage()
         {
             this.InitializeComponent();
             Loaded += MainPage_Loaded;
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
-            ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.Transparent;
-            ApplicationView.GetForCurrentView().TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)

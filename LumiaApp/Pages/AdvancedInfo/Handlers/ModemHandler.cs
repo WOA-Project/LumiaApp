@@ -15,7 +15,7 @@ namespace AdvancedInfo.Handlers
 
         public static async Task<ModemHandler> LoadHandlerAsync()
         {
-            var handler = new ModemHandler();
+            ModemHandler handler = new();
             await handler.Load();
             return handler;
         }
@@ -25,7 +25,7 @@ namespace AdvancedInfo.Handlers
             string selectorStr = MobileBroadbandModem.GetDeviceSelector();
             DeviceInformationCollection devices = await DeviceInformation.FindAllAsync(selectorStr);
 
-            List<string> modemList = new List<string>();
+            List<string> modemList = new();
 
             bool MoreThanOne = devices.Count > 1;
 
@@ -45,7 +45,7 @@ namespace AdvancedInfo.Handlers
                 modemList.Add("IMEI" + suffix + modem.DeviceInformation.SerialNumber);
                 if (modem.DeviceInformation.TelephoneNumbers.Count > 0)
                 {
-                    foreach (var number in modem.DeviceInformation.TelephoneNumbers)
+                    foreach (string number in modem.DeviceInformation.TelephoneNumbers)
                     {
                         modemList.Add("MDN" + suffix + number);
                     }

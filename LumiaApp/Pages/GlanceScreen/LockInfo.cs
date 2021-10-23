@@ -6,7 +6,7 @@ namespace LockApp
 {
     public class StatusProvider : INotifyPropertyChanged
     {
-        private Dictionary<string, object> Values = new Dictionary<string, object>();
+        private Dictionary<string, object> Values = new();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,7 +30,7 @@ namespace LockApp
 
     public class LockInfo : INotifyPropertyChanged
     {
-        private Dictionary<string, object> Values = new Dictionary<string, object>();
+        private Dictionary<string, object> Values = new();
 
         public event PropertyChangedEventHandler PropertyChanged;
 

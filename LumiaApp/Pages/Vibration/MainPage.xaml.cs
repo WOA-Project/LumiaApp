@@ -1,21 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using RegistryRT;
-using Windows.ApplicationModel.Core;
-using Windows.UI.ViewManagement;
-using Windows.UI;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -26,22 +14,16 @@ namespace Vibration
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private Registry regrt;
+        private Registry regrt => LumiaApp.App.Registry;
 
         bool ran1 = false;
         bool ran2 = false;
 
         public MainPage()
         {
-            regrt = new Registry();
-            regrt.InitNTDLLEntryPoints();
-
             this.InitializeComponent();
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
-            ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = Colors.Transparent;
-            ApplicationView.GetForCurrentView().TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
 
-            var result = ReadRegistryDwordFromVibra("Enabled");
+            int result = ReadRegistryDwordFromVibra("Enabled");
             if (result != -1)
                 EnableToggle.IsOn = result == 1;
 
@@ -98,13 +80,13 @@ namespace Vibration
         {
             try
             {
-                var vibration = await Windows.Devices.Haptics.VibrationDevice.RequestAccessAsync();
+                Windows.Devices.Haptics.VibrationAccessStatus vibration = await Windows.Devices.Haptics.VibrationDevice.RequestAccessAsync();
                 if (vibration == Windows.Devices.Haptics.VibrationAccessStatus.Allowed)
                 {
-                    var vibrationdevice = await Windows.Devices.Haptics.VibrationDevice.GetDefaultAsync();
+                    Windows.Devices.Haptics.VibrationDevice vibrationdevice = await Windows.Devices.Haptics.VibrationDevice.GetDefaultAsync();
                     if (vibrationdevice != null)
                     {
-                        var feedback = vibrationdevice.SimpleHapticsController.SupportedFeedback.First();
+                        Windows.Devices.Haptics.SimpleHapticsControllerFeedback feedback = vibrationdevice.SimpleHapticsController.SupportedFeedback.First();
 
                         vibrationdevice.SimpleHapticsController.SendHapticFeedbackForDuration(feedback, IntensitySlider.Value / 100d, new TimeSpan((long)DurationSlider.Value * 1000000L));
                     }

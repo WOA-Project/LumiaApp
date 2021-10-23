@@ -4,6 +4,7 @@ using RegistryRT;
 using AdvancedInfoRT;
 using Windows.UI.Popups;
 using System;
+using AdvancedInfo.ContentDialogs;
 
 namespace LumiaApp
 {
@@ -31,7 +32,7 @@ namespace LumiaApp
         private async void App_UnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
         {
             e.Handled = true;
-            await new MessageDialog(e.Exception.StackTrace, e.Exception.Message).ShowAsync();
+            await new SomethingHappened(e.Message + "\n" + e.Exception.ToString()).ShowAsync();
         }
 
         /// <summary>
