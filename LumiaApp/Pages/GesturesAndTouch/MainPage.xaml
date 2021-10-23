@@ -9,48 +9,42 @@
       muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
       mc:Ignorable="d">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-        <StackPanel Margin="24,56,24,24">
-            <StackPanel>
-                <TextBlock x:Name="TitleTextBlock"
-                           Padding="0,0,0,8"
-                           FontSize="24"
-                           FontWeight="Bold"
-                           Text="Gestures &amp; Touch"
-                           TextWrapping="Wrap" />
-                <RichTextBlock Padding="0,0,0,32">
-                    <Paragraph>
-                        <Run Text="To make other input adjustments, " />
-                        <Hyperlink NavigateUri="ms-settings:bluetooth" UnderlineStyle="None">
-                            <Run Text="go to Settings." />
-                        </Hyperlink>
-                    </Paragraph>
-                </RichTextBlock>
+    <local1:SettingsPageControl ModuleTitle="Gestures &amp; Touch">
+        <local1:SettingsPageControl.PrimaryLinks>
+            <local1:PageLink Link="ms-settings:bluetooth" Text="Go to System Input Settings" />
+        </local1:SettingsPageControl.PrimaryLinks>
+        <local1:SettingsPageControl.ModuleContent>
+            <StackPanel Orientation="Vertical">
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <ReorderThemeTransition />
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
+
+                <local1:Setting Description="Wake up the phone when I double tap on the screen" Header="Double tap to wake">
+                    <local1:Setting.Icon>
+                        <FontIcon Glyph="&#xE957;" />
+                    </local1:Setting.Icon>
+
+                    <local1:Setting.ActionContent>
+                        <ToggleSwitch x:Name="DoubleTapToWakeToggle"
+                                      IsOn="{x:Bind ViewModel.DoubleTapToWake, Mode=TwoWay}"
+                                      Style="{StaticResource SettingToggleSwitchStyle}" />
+                    </local1:Setting.ActionContent>
+                </local1:Setting>
+
+                <local1:Setting Description="Use the touch screen with most types of gloves." Header="Glove mode">
+                    <local1:Setting.Icon>
+                        <FontIcon Glyph="&#xEDA4;" />
+                    </local1:Setting.Icon>
+
+                    <local1:Setting.ActionContent>
+                        <ToggleSwitch x:Name="GloveModeToggle"
+                                      IsOn="{x:Bind ViewModel.GloveMode, Mode=TwoWay}"
+                                      Style="{StaticResource SettingToggleSwitchStyle}" />
+                    </local1:Setting.ActionContent>
+                </local1:Setting>
             </StackPanel>
-
-            <local1:Setting Description="Wake up the phone when I double tap on the screen" Header="Double tap to wake">
-                <local1:Setting.Icon>
-                    <FontIcon Glyph="&#xE957;" />
-                </local1:Setting.Icon>
-
-                <local1:Setting.ActionContent>
-                    <ToggleSwitch x:Name="DoubleTapToWakeToggle"
-                                  IsOn="{x:Bind ViewModel.DoubleTapToWake, Mode=TwoWay}"
-                                  Style="{StaticResource SettingToggleSwitchStyle}" />
-                </local1:Setting.ActionContent>
-            </local1:Setting>
-
-            <local1:Setting Description="Use the touch screen with most types of gloves." Header="Glove mode">
-                <local1:Setting.Icon>
-                    <FontIcon Glyph="&#xEDA4;" />
-                </local1:Setting.Icon>
-
-                <local1:Setting.ActionContent>
-                    <ToggleSwitch x:Name="GloveModeToggle"
-                                  IsOn="{x:Bind ViewModel.GloveMode, Mode=TwoWay}"
-                                  Style="{StaticResource SettingToggleSwitchStyle}" />
-                </local1:Setting.ActionContent>
-            </local1:Setting>
-        </StackPanel>
-    </ScrollViewer>
+        </local1:SettingsPageControl.ModuleContent>
+    </local1:SettingsPageControl>
 </Page>

@@ -9,57 +9,49 @@
       muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
       mc:Ignorable="d">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-        <StackPanel>
-            <StackPanel Padding="24,56,24,0">
-                <TextBlock x:Name="TitleTextBlock"
-                           Padding="0,0,0,8"
-                           FontSize="24"
-                           FontWeight="Bold"
-                           Text="USB Function Mode"
-                           TextWrapping="Wrap" />
-                <RichTextBlock Padding="0,0,0,32">
-                    <Paragraph>
-                        <Run Text="To make other usb adjustments, " />
-                        <Hyperlink NavigateUri="ms-settings:usb" UnderlineStyle="None">
-                            <Run Text="go to Settings." />
-                        </Hyperlink>
-                    </Paragraph>
-                </RichTextBlock>
+    <local1:SettingsPageControl ModuleTitle="USB Function Mode">
+        <local1:SettingsPageControl.PrimaryLinks>
+            <local1:PageLink Link="ms-settings:usb" Text="Go to System USB Settings" />
+        </local1:SettingsPageControl.PrimaryLinks>
+        <local1:SettingsPageControl.ModuleContent>
+            <StackPanel Orientation="Vertical">
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <ReorderThemeTransition />
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
+
+                <local1:SettingExpander>
+                    <local1:SettingExpander.Header>
+                        <local1:Setting Description="After changing your USB Function Mode, you need to unplug and replug your device for the configuration to take effect." Header="General">
+                            <local1:Setting.Icon>
+                                <FontIcon Glyph="&#xECF0;" />
+                            </local1:Setting.Icon>
+                        </local1:Setting>
+                    </local1:SettingExpander.Header>
+
+                    <ListView x:Name="ModesListView"
+                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                              ScrollViewer.VerticalScrollMode="Disabled"
+                              SelectionChanged="ModesListView_SelectionChanged"
+                              SelectionMode="Single">
+                        <ListView.ItemContainerStyle>
+                            <Style BasedOn="{StaticResource DefaultListViewItemStyle}" TargetType="ListViewItem">
+                                <Setter Property="Padding" Value="16" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <local1:Setting Description="{Binding Description, Mode=OneWay}" Header="{Binding Title, Mode=OneWay}">
+                                    <local1:Setting.Icon>
+                                        <SymbolIcon Symbol="Forward" />
+                                    </local1:Setting.Icon>
+                                </local1:Setting>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </local1:SettingExpander>
             </StackPanel>
-
-            <local1:SettingExpander>
-                <local1:SettingExpander.Header>
-                    <local1:Setting Description="After changing your USB Function Mode, you need to unplug and replug your device for the configuration to take effect." Header="General">
-                        <local1:Setting.Icon>
-                            <FontIcon Glyph="&#xECF0;" />
-                        </local1:Setting.Icon>
-                    </local1:Setting>
-                </local1:SettingExpander.Header>
-
-                <ListView x:Name="ModesListView"
-                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          ScrollViewer.VerticalScrollMode="Disabled"
-                          SelectionChanged="ModesListView_SelectionChanged"
-                          SelectionMode="Single">
-                    <ListView.ItemContainerStyle>
-                        <Style BasedOn="{StaticResource DefaultListViewItemStyle}" TargetType="ListViewItem">
-                            <Setter Property="Padding" Value="16" />
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <local1:Setting Description="{Binding Description, Mode=OneWay}" Header="{Binding Title, Mode=OneWay}">
-                                <local1:Setting.Icon>
-                                    <SymbolIcon Symbol="Forward" />
-                                </local1:Setting.Icon>
-                            </local1:Setting>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </local1:SettingExpander>
-
-
-        </StackPanel>
-    </ScrollViewer>
+        </local1:SettingsPageControl.ModuleContent>
+    </local1:SettingsPageControl>
 </Page>

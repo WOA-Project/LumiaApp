@@ -15,209 +15,203 @@
         <local:IntegerIsNotFourToBooleanConverter x:Key="IntegerIsNotFourToBooleanConverter" />
     </Page.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-        <StackPanel Margin="24,56,24,24">
-            <StackPanel>
-                <TextBlock x:Name="TitleTextBlock"
-                           Padding="0,0,0,8"
-                           FontSize="24"
-                           FontWeight="Bold"
-                           Text="Glance Screen"
-                           TextWrapping="Wrap" />
-                <RichTextBlock Padding="0,0,0,32">
-                    <Paragraph>
-                        <Run Text="To make other lock screen adjustments, " />
-                        <Hyperlink NavigateUri="ms-settings:lockscreen" UnderlineStyle="None">
-                            <Run Text="go to Settings." />
-                        </Hyperlink>
-                    </Paragraph>
-                </RichTextBlock>
-            </StackPanel>
+    <local1:SettingsPageControl ModuleTitle="Glance Screen">
+        <local1:SettingsPageControl.PrimaryLinks>
+            <local1:PageLink Link="ms-settings:lockscreen" Text="Go to System lockscreen Settings" />
+        </local1:SettingsPageControl.PrimaryLinks>
+        <local1:SettingsPageControl.ModuleContent>
+            <StackPanel Orientation="Vertical">
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <ReorderThemeTransition />
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
 
-            <ScrollViewer x:Name="LockScreen"
-                          Width="160"
-                          Height="300"
-                          Margin="0,0,0,24"
-                          HorizontalAlignment="Left"
-                          Background="Black"
-                          CornerRadius="8"
-                          HorizontalScrollBarVisibility="Visible"
-                          HorizontalScrollMode="Disabled"
-                          ZoomMode="Disabled">
-                <local:LockScreen Width="360"
-                                  Height="640"
-                                  HorizontalAlignment="Center"
-                                  VerticalAlignment="Center" />
-            </ScrollViewer>
+                <ScrollViewer x:Name="LockScreen"
+                              Width="160"
+                              Height="300"
+                              Margin="0,0,0,24"
+                              HorizontalAlignment="Left"
+                              Background="Black"
+                              CornerRadius="8"
+                              HorizontalScrollBarVisibility="Visible"
+                              HorizontalScrollMode="Disabled"
+                              ZoomMode="Disabled">
+                    <local:LockScreen Width="360"
+                                      Height="640"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center" />
+                </ScrollViewer>
 
-            <local1:SettingsGroup Header="Mode">
-                <local1:Setting Description="Show the time and other lock screen content in standby for the selected period." Header="Display Interval">
-                    <local1:Setting.Icon>
-                        <FontIcon Glyph="&#xEE65;" />
-                    </local1:Setting.Icon>
-
-                    <local1:Setting.ActionContent>
-                        <ComboBox x:Name="TimeComboBox" SelectedIndex="{x:Bind ViewModel.Mode, Mode=TwoWay}">
-                            <ComboBox.Items>
-                                <ComboBoxItem Content="Off" />
-                                <ComboBoxItem Content="30 seconds" />
-                                <ComboBoxItem Content="15 minutes" />
-                                <ComboBoxItem Content="Always on" />
-                            </ComboBox.Items>
-                        </ComboBox>
-                    </local1:Setting.ActionContent>
-                </local1:Setting>
-            </local1:SettingsGroup>
-
-            <StackPanel x:Name="MainContentStackPanel"
-                        Margin="0,24,0,0"
-                        x:Load="{x:Bind TimeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}">
-                <local1:SettingsGroup Header="Content">
-                    <RichTextBlock Margin="0,0,0,8">
-                        <Paragraph>
-                            <Run Text="Show content from " />
-                            <Hyperlink NavigateUri="ms-settings:lockscreen" UnderlineStyle="None">
-                                <Run Text="the lock screen." />
-                            </Hyperlink>
-                        </Paragraph>
-                    </RichTextBlock>
-
-                    <local1:SettingExpander>
-                        <local1:SettingExpander.Header>
-                            <local1:Setting Description="Show your lock screen background photo on the glance screen" Header="Background photo">
-                                <local1:Setting.Icon>
-                                    <FontIcon Glyph="&#xEE3F;" />
-                                </local1:Setting.Icon>
-
-                                <local1:Setting.ActionContent>
-                                    <ToggleSwitch x:Name="BackgroundPhotoToggle"
-                                                  IsOn="{x:Bind ViewModel.BackgroundPhoto, Mode=TwoWay}"
-                                                  Style="{StaticResource SettingToggleSwitchStyle}" />
-                                </local1:Setting.ActionContent>
-                            </local1:Setting>
-                        </local1:SettingExpander.Header>
-
-                        <local1:Setting Description="Change the way your background photo looks on the glance screen" Header="Image style">
-
-                            <local1:Setting.ActionContent>
-                                <ComboBox x:Name="BackgroundImageStyleComboBox"
-                                          IsEnabled="{x:Bind BackgroundPhotoToggle.IsOn, Mode=OneWay}"
-                                          SelectedIndex="{x:Bind ViewModel.BackgroundPhotoColorType, Mode=TwoWay}">
-                                    <ComboBox.Items>
-                                        <ComboBoxItem Content="Black and white" />
-                                        <ComboBoxItem Content="Color" />
-                                    </ComboBox.Items>
-                                </ComboBox>
-                            </local1:Setting.ActionContent>
-                        </local1:Setting>
-                    </local1:SettingExpander>
-                    <local1:Setting Description="Show the current date on the glance screen" Header="Date">
+                <local1:SettingsGroup Header="Mode">
+                    <local1:Setting Description="Show the time and other lock screen content in standby for the selected period." Header="Display Interval">
                         <local1:Setting.Icon>
-                            <FontIcon Glyph="&#xE161;" />
+                            <FontIcon Glyph="&#xEE65;" />
                         </local1:Setting.Icon>
 
                         <local1:Setting.ActionContent>
-                            <ToggleSwitch x:Name="DateToggle"
-                                          IsOn="{x:Bind ViewModel.Date, Mode=TwoWay}"
-                                          Style="{StaticResource SettingToggleSwitchStyle}" />
+                            <ComboBox x:Name="TimeComboBox" SelectedIndex="{x:Bind ViewModel.Mode, Mode=TwoWay}">
+                                <ComboBox.Items>
+                                    <ComboBoxItem Content="Off" />
+                                    <ComboBoxItem Content="30 seconds" />
+                                    <ComboBoxItem Content="15 minutes" />
+                                    <ComboBoxItem Content="Always on" />
+                                </ComboBox.Items>
+                            </ComboBox>
                         </local1:Setting.ActionContent>
                     </local1:Setting>
-
-                    <local1:Setting Description="Show your notification icons on the glance screen" Header="Notification icons">
-                        <local1:Setting.Icon>
-                            <FontIcon Glyph="&#xE3BC;" />
-                        </local1:Setting.Icon>
-
-                        <local1:Setting.ActionContent>
-                            <ToggleSwitch x:Name="NotificationIconsToggle"
-                                          IsOn="{x:Bind ViewModel.NotificationIcons, Mode=TwoWay}"
-                                          Style="{StaticResource SettingToggleSwitchStyle}" />
-                        </local1:Setting.ActionContent>
-                    </local1:Setting>
-
-                    <local1:Setting Description="Show detailed app status on the glance screen" Header="Detailed app status">
-                        <local1:Setting.Icon>
-                            <FontIcon Glyph="&#xE74C;" />
-                        </local1:Setting.Icon>
-
-                        <local1:Setting.ActionContent>
-                            <ToggleSwitch x:Name="DetailedAppStatusToggle"
-                                          IsOn="{x:Bind ViewModel.DetailedAppStatus, Mode=TwoWay}"
-                                          Style="{StaticResource SettingToggleSwitchStyle}" />
-                        </local1:Setting.ActionContent>
-                    </local1:Setting>
-
                 </local1:SettingsGroup>
 
-                <local1:SettingsGroup Header="Exceptions">
+                <StackPanel x:Name="MainContentStackPanel"
+                            Margin="0,24,0,0"
+                            x:Load="{x:Bind TimeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}">
+                    <local1:SettingsGroup Header="Content">
+                        <RichTextBlock Margin="0,0,0,8">
+                            <Paragraph>
+                                <Run Text="Show content from " />
+                                <Hyperlink NavigateUri="ms-settings:lockscreen" UnderlineStyle="None">
+                                    <Run Text="the lock screen." />
+                                </Hyperlink>
+                            </Paragraph>
+                        </RichTextBlock>
 
-                    <local1:Setting Description="Show the glance screen all the time when a charger is plugged in and the device is charging" Header="Always show glance screen when charging">
-                        <local1:Setting.Icon>
-                            <FontIcon Glyph="&#xF602;" />
-                        </local1:Setting.Icon>
+                        <local1:SettingExpander>
+                            <local1:SettingExpander.Header>
+                                <local1:Setting Description="Show your lock screen background photo on the glance screen" Header="Background photo">
+                                    <local1:Setting.Icon>
+                                        <FontIcon Glyph="&#xEE3F;" />
+                                    </local1:Setting.Icon>
 
-                        <local1:Setting.ActionContent>
-                            <ToggleSwitch x:Name="AlwaysShowGlanceScreenWhileChargingToggle"
-                                          IsOn="{x:Bind ViewModel.AlwaysShowWhenCharging, Mode=TwoWay}"
-                                          Style="{StaticResource SettingToggleSwitchStyle}" />
-                        </local1:Setting.ActionContent>
-                    </local1:Setting>
+                                    <local1:Setting.ActionContent>
+                                        <ToggleSwitch x:Name="BackgroundPhotoToggle"
+                                                      IsOn="{x:Bind ViewModel.BackgroundPhoto, Mode=TwoWay}"
+                                                      Style="{StaticResource SettingToggleSwitchStyle}" />
+                                    </local1:Setting.ActionContent>
+                                </local1:Setting>
+                            </local1:SettingExpander.Header>
 
-                    <local1:SettingExpander>
-                        <local1:SettingExpander.Header>
-                            <local1:Setting Description="Night mode overrides charging settings." Header="Night mode">
-                                <local1:Setting.Icon>
-                                    <FontIcon Glyph="&#xE708;" />
-                                </local1:Setting.Icon>
+                            <local1:Setting Description="Change the way your background photo looks on the glance screen" Header="Image style">
 
                                 <local1:Setting.ActionContent>
-                                    <ComboBox x:Name="NightModeComboBox" SelectedIndex="{x:Bind ViewModel.NightMode, Mode=TwoWay}">
+                                    <ComboBox x:Name="BackgroundImageStyleComboBox"
+                                              IsEnabled="{x:Bind BackgroundPhotoToggle.IsOn, Mode=OneWay}"
+                                              SelectedIndex="{x:Bind ViewModel.BackgroundPhotoColorType, Mode=TwoWay}">
                                         <ComboBox.Items>
-                                            <ComboBoxItem Content="Off" />
-                                            <ComboBoxItem Content="Red" />
-                                            <ComboBoxItem Content="Green" />
-                                            <ComboBoxItem Content="Blue" />
-                                            <ComboBoxItem Content="Hide glance screen" />
+                                            <ComboBoxItem Content="Black and white" />
+                                            <ComboBoxItem Content="Color" />
                                         </ComboBox.Items>
                                     </ComboBox>
                                 </local1:Setting.ActionContent>
                             </local1:Setting>
-                        </local1:SettingExpander.Header>
+                        </local1:SettingExpander>
+                        <local1:Setting Description="Show the current date on the glance screen" Header="Date">
+                            <local1:Setting.Icon>
+                                <FontIcon Glyph="&#xE161;" />
+                            </local1:Setting.Icon>
+
+                            <local1:Setting.ActionContent>
+                                <ToggleSwitch x:Name="DateToggle"
+                                              IsOn="{x:Bind ViewModel.Date, Mode=TwoWay}"
+                                              Style="{StaticResource SettingToggleSwitchStyle}" />
+                            </local1:Setting.ActionContent>
+                        </local1:Setting>
+
+                        <local1:Setting Description="Show your notification icons on the glance screen" Header="Notification icons">
+                            <local1:Setting.Icon>
+                                <FontIcon Glyph="&#xE3BC;" />
+                            </local1:Setting.Icon>
+
+                            <local1:Setting.ActionContent>
+                                <ToggleSwitch x:Name="NotificationIconsToggle"
+                                              IsOn="{x:Bind ViewModel.NotificationIcons, Mode=TwoWay}"
+                                              Style="{StaticResource SettingToggleSwitchStyle}" />
+                            </local1:Setting.ActionContent>
+                        </local1:Setting>
+
+                        <local1:Setting Description="Show detailed app status on the glance screen" Header="Detailed app status">
+                            <local1:Setting.Icon>
+                                <FontIcon Glyph="&#xE74C;" />
+                            </local1:Setting.Icon>
+
+                            <local1:Setting.ActionContent>
+                                <ToggleSwitch x:Name="DetailedAppStatusToggle"
+                                              IsOn="{x:Bind ViewModel.DetailedAppStatus, Mode=TwoWay}"
+                                              Style="{StaticResource SettingToggleSwitchStyle}" />
+                            </local1:Setting.ActionContent>
+                        </local1:Setting>
+
+                    </local1:SettingsGroup>
+
+                    <local1:SettingsGroup Header="Exceptions">
+
+                        <local1:Setting Description="Show the glance screen all the time when a charger is plugged in and the device is charging" Header="Always show glance screen when charging">
+                            <local1:Setting.Icon>
+                                <FontIcon Glyph="&#xF602;" />
+                            </local1:Setting.Icon>
+
+                            <local1:Setting.ActionContent>
+                                <ToggleSwitch x:Name="AlwaysShowGlanceScreenWhileChargingToggle"
+                                              IsOn="{x:Bind ViewModel.AlwaysShowWhenCharging, Mode=TwoWay}"
+                                              Style="{StaticResource SettingToggleSwitchStyle}" />
+                            </local1:Setting.ActionContent>
+                        </local1:Setting>
+
+                        <local1:SettingExpander>
+                            <local1:SettingExpander.Header>
+                                <local1:Setting Description="Night mode overrides charging settings." Header="Night mode">
+                                    <local1:Setting.Icon>
+                                        <FontIcon Glyph="&#xE708;" />
+                                    </local1:Setting.Icon>
+
+                                    <local1:Setting.ActionContent>
+                                        <ComboBox x:Name="NightModeComboBox" SelectedIndex="{x:Bind ViewModel.NightMode, Mode=TwoWay}">
+                                            <ComboBox.Items>
+                                                <ComboBoxItem Content="Off" />
+                                                <ComboBoxItem Content="Red" />
+                                                <ComboBoxItem Content="Green" />
+                                                <ComboBoxItem Content="Blue" />
+                                                <ComboBoxItem Content="Hide glance screen" />
+                                            </ComboBox.Items>
+                                        </ComboBox>
+                                    </local1:Setting.ActionContent>
+                                </local1:Setting>
+                            </local1:SettingExpander.Header>
 
 
-                        <StackPanel Spacing="16">
-                            <local1:Setting Header="Time intervals">
-                                <local1:Setting.Description>
-                                    <StackPanel>
-                                        <TextBlock x:Name="ShowLabelText"
-                                                   x:Load="{x:Bind NightModeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerIsNotFourToBooleanConverter}}"
-                                                   Text="Dims glance screen and hides the photo and Glance screen app during the set time range." />
-                                        <TextBlock x:Name="HideLabelText"
-                                                   x:Load="{x:Bind NightModeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerIsFourToBooleanConverter}}"
-                                                   Text="Hides glance screen during the set time range." />
-                                    </StackPanel>
-                                </local1:Setting.Description>
-                            </local1:Setting>
+                            <StackPanel Spacing="16">
+                                <local1:Setting Header="Time intervals">
+                                    <local1:Setting.Description>
+                                        <StackPanel>
+                                            <TextBlock x:Name="ShowLabelText"
+                                                       x:Load="{x:Bind NightModeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerIsNotFourToBooleanConverter}}"
+                                                       Text="Dims glance screen and hides the photo and Glance screen app during the set time range." />
+                                            <TextBlock x:Name="HideLabelText"
+                                                       x:Load="{x:Bind NightModeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerIsFourToBooleanConverter}}"
+                                                       Text="Hides glance screen during the set time range." />
+                                        </StackPanel>
+                                    </local1:Setting.Description>
+                                </local1:Setting>
 
-                            <local1:Setting Header="Start time">
-                                <local1:Setting.ActionContent>
-                                    <TimePicker ClockIdentifier="24HourClock"
-                                                IsEnabled="{x:Bind NightModeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}"
-                                                Time="{x:Bind ViewModel.StartTime, Mode=TwoWay}" />
-                                </local1:Setting.ActionContent>
-                            </local1:Setting>
+                                <local1:Setting Header="Start time">
+                                    <local1:Setting.ActionContent>
+                                        <TimePicker ClockIdentifier="24HourClock"
+                                                    IsEnabled="{x:Bind NightModeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}"
+                                                    Time="{x:Bind ViewModel.StartTime, Mode=TwoWay}" />
+                                    </local1:Setting.ActionContent>
+                                </local1:Setting>
 
-                            <local1:Setting Header="End time">
-                                <local1:Setting.ActionContent>
-                                    <TimePicker ClockIdentifier="24HourClock"
-                                                IsEnabled="{x:Bind NightModeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}"
-                                                Time="{x:Bind ViewModel.EndTime, Mode=TwoWay}" />
-                                </local1:Setting.ActionContent>
-                            </local1:Setting>
-                        </StackPanel>
-                    </local1:SettingExpander>
-                </local1:SettingsGroup>
+                                <local1:Setting Header="End time">
+                                    <local1:Setting.ActionContent>
+                                        <TimePicker ClockIdentifier="24HourClock"
+                                                    IsEnabled="{x:Bind NightModeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}"
+                                                    Time="{x:Bind ViewModel.EndTime, Mode=TwoWay}" />
+                                    </local1:Setting.ActionContent>
+                                </local1:Setting>
+                            </StackPanel>
+                        </local1:SettingExpander>
+                    </local1:SettingsGroup>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-    </ScrollViewer>
+        </local1:SettingsPageControl.ModuleContent>
+    </local1:SettingsPageControl>
 </Page>

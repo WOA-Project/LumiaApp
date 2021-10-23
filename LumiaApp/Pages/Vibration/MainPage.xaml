@@ -9,97 +9,87 @@
       muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
       mc:Ignorable="d">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-        <StackPanel>
-            <StackPanel Padding="24,56,24,0">
-                <TextBlock x:Name="TitleTextBlock"
-                           Padding="0,0,0,8"
-                           FontSize="24"
-                           FontWeight="Bold"
-                           Text="Vibration"
-                           TextWrapping="Wrap" />
-                <RichTextBlock Padding="0,0,0,32">
-                    <Paragraph>
-                        <Run Text="To make other notification adjustments, " />
-                        <Hyperlink NavigateUri="ms-settings:notifications" UnderlineStyle="None">
-                            <Run Text="go to Settings." />
-                        </Hyperlink>
-                    </Paragraph>
-                </RichTextBlock>
+    <local1:SettingsPageControl ModuleTitle="Vibration">
+        <local1:SettingsPageControl.PrimaryLinks>
+            <local1:PageLink Link="ms-settings:notifications" Text="Go to System Notifications Settings" />
+        </local1:SettingsPageControl.PrimaryLinks>
+        <local1:SettingsPageControl.ModuleContent>
+            <StackPanel Orientation="Vertical">
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <ReorderThemeTransition />
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
+
+                <local1:SettingExpander>
+                    <local1:SettingExpander.Header>
+                        <local1:Setting Description="Enable vibrations when receiving notifications" Header="Vibrate">
+                            <local1:Setting.Icon>
+                                <FontIcon Glyph="&#xE877;" />
+                            </local1:Setting.Icon>
+
+                            <local1:Setting.ActionContent>
+                                <ToggleSwitch x:Name="EnableToggle"
+                                              Style="{StaticResource SettingToggleSwitchStyle}"
+                                              Toggled="EnableToggle_Toggled" />
+                            </local1:Setting.ActionContent>
+                        </local1:Setting>
+                    </local1:SettingExpander.Header>
+
+                    <StackPanel Margin="16">
+                        <local1:Setting Header="Vibration duration">
+                            <local1:Setting.Icon>
+                                <FontIcon Glyph="&#xE121;" />
+                            </local1:Setting.Icon>
+
+                            <local1:Setting.ActionContent>
+                                <StackPanel>
+                                    <Grid>
+                                        <Slider x:Name="DurationSlider"
+                                                MinWidth="360"
+                                                Margin="0,0,0,2"
+                                                IsEnabled="{x:Bind EnableToggle.IsOn, Mode=OneWay}"
+                                                IsThumbToolTipEnabled="False"
+                                                ManipulationMode="All"
+                                                Maximum="10"
+                                                Minimum="1"
+                                                ValueChanged="DurationSlider_ValueChanged" />
+                                    </Grid>
+                                    <Grid HorizontalAlignment="Stretch">
+                                        <TextBlock HorizontalAlignment="Left" Text="Short" />
+                                        <TextBlock HorizontalAlignment="Right" Text="Long" />
+                                    </Grid>
+                                </StackPanel>
+                            </local1:Setting.ActionContent>
+                        </local1:Setting>
+                        <local1:Setting Header="Vibration intensity">
+                            <local1:Setting.Icon>
+                                <FontIcon Glyph="&#xF61F;" />
+                            </local1:Setting.Icon>
+
+                            <local1:Setting.ActionContent>
+                                <StackPanel>
+                                    <Grid>
+                                        <Slider x:Name="IntensitySlider"
+                                                MinWidth="360"
+                                                Margin="0,0,0,2"
+                                                IsEnabled="{x:Bind EnableToggle.IsOn, Mode=OneWay}"
+                                                IsThumbToolTipEnabled="False"
+                                                ManipulationMode="All"
+                                                Maximum="100"
+                                                Minimum="20"
+                                                ValueChanged="IntensitySlider_ValueChanged" />
+                                    </Grid>
+                                    <Grid HorizontalAlignment="Stretch">
+                                        <TextBlock HorizontalAlignment="Left" Text="Weak" />
+                                        <TextBlock HorizontalAlignment="Right" Text="Strong" />
+                                    </Grid>
+                                </StackPanel>
+                            </local1:Setting.ActionContent>
+                        </local1:Setting>
+                    </StackPanel>
+                </local1:SettingExpander>
             </StackPanel>
-
-            <local1:SettingExpander>
-                <local1:SettingExpander.Header>
-                    <local1:Setting Description="Enable vibrations when receiving notifications" Header="Vibrate">
-                        <local1:Setting.Icon>
-                            <FontIcon Glyph="&#xE877;" />
-                        </local1:Setting.Icon>
-
-                        <local1:Setting.ActionContent>
-                            <ToggleSwitch x:Name="EnableToggle"
-                                          Style="{StaticResource SettingToggleSwitchStyle}"
-                                          Toggled="EnableToggle_Toggled" />
-                        </local1:Setting.ActionContent>
-                    </local1:Setting>
-                </local1:SettingExpander.Header>
-
-                <StackPanel Margin="16">
-                    <local1:Setting Header="Vibration duration">
-                        <local1:Setting.Icon>
-                            <FontIcon Glyph="&#xE121;" />
-                        </local1:Setting.Icon>
-
-                        <local1:Setting.ActionContent>
-                            <StackPanel>
-                                <Grid>
-                                    <Slider x:Name="DurationSlider"
-                                            MinWidth="360"
-                                            Margin="0,0,0,2"
-                                            IsEnabled="{x:Bind EnableToggle.IsOn, Mode=OneWay}"
-                                            IsThumbToolTipEnabled="False"
-                                            ManipulationMode="All"
-                                            Maximum="10"
-                                            Minimum="1"
-                                            ValueChanged="DurationSlider_ValueChanged" />
-                                </Grid>
-                                <Grid HorizontalAlignment="Stretch">
-                                    <TextBlock HorizontalAlignment="Left"
-                                               Text="Short" />
-                                    <TextBlock HorizontalAlignment="Right"
-                                               Text="Long" />
-                                </Grid>
-                            </StackPanel>
-                        </local1:Setting.ActionContent>
-                    </local1:Setting>
-                    <local1:Setting Header="Vibration intensity">
-                        <local1:Setting.Icon>
-                            <FontIcon Glyph="&#xF61F;" />
-                        </local1:Setting.Icon>
-
-                        <local1:Setting.ActionContent>
-                            <StackPanel>
-                                <Grid>
-                                    <Slider x:Name="IntensitySlider"
-                                            MinWidth="360"
-                                            Margin="0,0,0,2"
-                                            IsEnabled="{x:Bind EnableToggle.IsOn, Mode=OneWay}"
-                                            IsThumbToolTipEnabled="False"
-                                            ManipulationMode="All"
-                                            Maximum="100"
-                                            Minimum="20"
-                                            ValueChanged="IntensitySlider_ValueChanged" />
-                                </Grid>
-                                <Grid HorizontalAlignment="Stretch">
-                                    <TextBlock HorizontalAlignment="Left"
-                                               Text="Weak" />
-                                    <TextBlock HorizontalAlignment="Right"
-                                               Text="Strong" />
-                                </Grid>
-                            </StackPanel>
-                        </local1:Setting.ActionContent>
-                    </local1:Setting>
-                </StackPanel>
-            </local1:SettingExpander>
-        </StackPanel>
-    </ScrollViewer>
+        </local1:SettingsPageControl.ModuleContent>
+    </local1:SettingsPageControl>
 </Page>
