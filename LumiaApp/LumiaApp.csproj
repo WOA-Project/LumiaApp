@@ -167,18 +167,11 @@
     <Compile Include="Pages\GlanceScreen\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Settings\Legacy\SettingsBlockControl.xaml.cs">
-      <DependentUpon>SettingsBlockControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Settings\Legacy\SettingsDisplayControl.xaml.cs">
-      <DependentUpon>SettingsDisplayControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\GlanceScreen\SettingsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Settings\Legacy\Converters.cs" />
     <Compile Include="Pages\USBFunctionMode\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -307,14 +300,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\GlanceScreen\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Settings\Legacy\SettingsBlockControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Settings\Legacy\SettingsDisplayControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
