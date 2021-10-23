@@ -96,11 +96,6 @@ namespace GlanceScreen
 
         private bool forbidWrites = true;
 
-        public SettingsModel()
-        {
-
-        }
-
         public void RefreshEverything()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mode"));
