@@ -87,7 +87,11 @@
                                   PaneClosing="NavigationViewControl_PaneClosing"
                                   PaneOpening="NavigationViewControl_PaneOpened">
             <settings:SettingsControl.PaneHeader>
-                <Button Margin="-36,48,4,8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Transparent" BorderBrush="Transparent">
+                <Button Margin="-36,48,4,8"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        Background="Transparent"
+                        BorderBrush="Transparent">
                     <Grid HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -98,13 +102,27 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Rectangle Margin="0,2,16,0" Grid.RowSpan="2" x:Name="ProfileImage" Height="32" Width="32" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Rectangle x:Name="ProfileImage"
+                                   Grid.RowSpan="2"
+                                   Width="32"
+                                   Height="32"
+                                   Margin="0,2,16,0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center">
                             <Rectangle.Fill>
-                                <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/Lumia950.png"/>
+                                <ImageBrush ImageSource="ms-appx:///Assets/Lumia950.png" Stretch="UniformToFill" />
                             </Rectangle.Fill>
                         </Rectangle>
-                        <TextBlock Grid.Column="1" x:Name="TitleBlock" FontWeight="Bold" Text="Undefined" HorizontalAlignment="Left" />
-                        <TextBlock Grid.Column="1" Grid.Row="1" x:Name="SubtitleBlock" Text="Undefined" HorizontalAlignment="Left" />
+                        <TextBlock x:Name="TitleBlock"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   FontWeight="Bold"
+                                   Text="Undefined" />
+                        <TextBlock x:Name="SubtitleBlock"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Left"
+                                   Text="Undefined" />
                     </Grid>
                 </Button>
             </settings:SettingsControl.PaneHeader>

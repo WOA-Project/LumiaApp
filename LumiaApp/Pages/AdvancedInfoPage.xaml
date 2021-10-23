@@ -8,12 +8,11 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
 
-    <controls:SettingsPageControl ModuleDescription="Get more information about your Lumia Device"
-                                   ModuleTitle="Advanced Info">
+    <controls:SettingsPageControl ModuleDescription="Get more information about your Lumia Device" ModuleTitle="Advanced Info">
         <controls:SettingsPageControl.PrimaryLinks>
-            <controls:PageLink Text="Get Support" Link="https://go.microsoft.com/fwlink/?LinkId=519171" />
-            <controls:PageLink Text="Get accessories" Link="https://go.microsoft.com/fwlink/?LinkId=526929" />
-            <controls:PageLink Text="View Windows specific information" Link="ms-settings:about" />
+            <controls:PageLink Link="https://go.microsoft.com/fwlink/?LinkId=519171" Text="Get Support" />
+            <controls:PageLink Link="https://go.microsoft.com/fwlink/?LinkId=526929" Text="Get accessories" />
+            <controls:PageLink Link="ms-settings:about" Text="View Windows specific information" />
         </controls:SettingsPageControl.PrimaryLinks>
         <controls:SettingsPageControl.ModuleContent>
             <StackPanel Orientation="Vertical">
@@ -22,30 +21,44 @@
                         <ReorderThemeTransition />
                     </TransitionCollection>
                 </StackPanel.ChildrenTransitions>
-                <Grid HorizontalAlignment="Stretch" Margin="0,0,0,32">
+                <Grid Margin="0,0,0,32" HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Rectangle x:Name="ProfileImage" Height="150" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Rectangle x:Name="ProfileImage"
+                               Width="150"
+                               Height="150"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center">
                         <Rectangle.Fill>
-                            <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/Lumia950.png"/>
+                            <ImageBrush ImageSource="ms-appx:///Assets/Lumia950.png" Stretch="UniformToFill" />
                         </Rectangle.Fill>
                     </Rectangle>
 
-                    <StackPanel Spacing="8" Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock x:Name="TitleBlock" Text="Undefined" FontSize="20" TextWrapping="Wrap" HorizontalAlignment="Left"/>
-                        <TextBlock x:Name="SubtitleBlock" Text="Undefined" FontSize="14" TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                    <StackPanel Grid.Column="1"
+                                VerticalAlignment="Center"
+                                Spacing="8">
+                        <TextBlock x:Name="TitleBlock"
+                                   HorizontalAlignment="Left"
+                                   FontSize="20"
+                                   Text="Undefined"
+                                   TextWrapping="Wrap" />
+                        <TextBlock x:Name="SubtitleBlock"
+                                   HorizontalAlignment="Left"
+                                   FontSize="14"
+                                   Text="Undefined"
+                                   TextWrapping="Wrap" />
                     </StackPanel>
                 </Grid>
 
                 <muxc:InfoBar x:Name="FileSystemAccessWarning"
                               Title="Permissions required"
-                              Message="In order to show you more information, Advanced Info requires you to grant File System access rights to this app. Would you like to do this now? (This will open the settings app for you)"
                               IsClosable="False"
                               IsOpen="False"
                               IsTabStop="True"
+                              Message="In order to show you more information, Advanced Info requires you to grant File System access rights to this app. Would you like to do this now? (This will open the settings app for you)"
                               Severity="Warning">
                     <muxc:InfoBar.ActionButton>
                         <Button Click="Button_Click" Content="Open File System Privacy Settings" />
@@ -55,7 +68,7 @@
                 <controls:SettingsGroup Header="Software Information">
                     <controls:SettingExpander>
                         <controls:SettingExpander.Header>
-                            <controls:Setting Header="Software release" Description="Information about your device software">
+                            <controls:Setting Description="Information about your device software" Header="Software release">
                                 <controls:Setting.Icon>
                                     <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE835;" />
                                 </controls:Setting.Icon>
@@ -65,46 +78,46 @@
                                           Padding="8,4"
                                           HorizontalAlignment="Center"
                                           Background="DarkSlateBlue"
-                                          Tapped="ReleasePanel_Tapped"
-                                          CornerRadius="10">
+                                          CornerRadius="10"
+                                          Tapped="ReleasePanel_Tapped">
                                         <TextBlock x:Name="VersionNameText"
-                                           HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"
-                                           FontSize="12"
-                                           FontWeight="Bold"
-                                           Text="Lumia Windows on ARM XXXX"
-                                           Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
-                                           RequestedTheme="Light"/>
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="12"
+                                                   FontWeight="Bold"
+                                                   Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+                                                   RequestedTheme="Light"
+                                                   Text="Lumia Windows on ARM XXXX" />
                                     </Grid>
                                 </controls:Setting.ActionContent>
                             </controls:Setting>
                         </controls:SettingExpander.Header>
 
-                        <StackPanel  Margin="56,16,16,16" Spacing="16">
-                            <TextBlock Text="This project was made possible by:" TextWrapping="Wrap"/>
-                            <TextBlock Text="- ADeltaX" TextWrapping="Wrap"/>
-                            <TextBlock Text="- Googulator" TextWrapping="Wrap"/>
-                            <TextBlock Text="- gus33000" TextWrapping="Wrap"/>
-                            <TextBlock Text="- imbushuo" TextWrapping="Wrap"/>
-                            <TextBlock Text="- @never_released" TextWrapping="Wrap"/>
-                            <TextBlock Text="- Heathcliff74 for WPInternals" TextWrapping="Wrap"/>
-                            <TextBlock Text="- Our friends in China that worked hard to bring the Hapanero ARM64 firmware into the public and that provided test hardware for us." TextWrapping="Wrap"/>
-                            <TextBlock Text="- Our testers, you know who you are :)" TextWrapping="Wrap"/>
-                            <TextBlock Text="- The Windows RT Lumia projects" TextWrapping="Wrap"/>
-                            <TextBlock Text="- Qualcomm and Microsoft" TextWrapping="Wrap"/>
-                            <TextBlock Text="- and many other friends and contacts which would be too long to list here" TextWrapping="Wrap"/>
+                        <StackPanel Margin="56,16,16,16" Spacing="16">
+                            <TextBlock Text="This project was made possible by:" TextWrapping="Wrap" />
+                            <TextBlock Text="- ADeltaX" TextWrapping="Wrap" />
+                            <TextBlock Text="- Googulator" TextWrapping="Wrap" />
+                            <TextBlock Text="- gus33000" TextWrapping="Wrap" />
+                            <TextBlock Text="- imbushuo" TextWrapping="Wrap" />
+                            <TextBlock Text="- @never_released" TextWrapping="Wrap" />
+                            <TextBlock Text="- Heathcliff74 for WPInternals" TextWrapping="Wrap" />
+                            <TextBlock Text="- Our friends in China that worked hard to bring the Hapanero ARM64 firmware into the public and that provided test hardware for us." TextWrapping="Wrap" />
+                            <TextBlock Text="- Our testers, you know who you are :)" TextWrapping="Wrap" />
+                            <TextBlock Text="- The Windows RT Lumia projects" TextWrapping="Wrap" />
+                            <TextBlock Text="- Qualcomm and Microsoft" TextWrapping="Wrap" />
+                            <TextBlock Text="- and many other friends and contacts which would be too long to list here" TextWrapping="Wrap" />
                         </StackPanel>
                     </controls:SettingExpander>
-                    
-                    <controls:Setting Header="Storage" Description="Internal Storage">
+
+                    <controls:Setting Description="Internal Storage" Header="Storage">
                         <controls:Setting.Icon>
                             <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xEDA2;" />
                         </controls:Setting.Icon>
 
                         <controls:Setting.ActionContent>
                             <StackPanel Spacing="8">
-                                <muxc:ProgressBar x:Name="InternalStorageUsage"/>
-                                <TextBlock x:Name="UsageDesc" TextAlignment="Right"/>
+                                <muxc:ProgressBar x:Name="InternalStorageUsage" />
+                                <TextBlock x:Name="UsageDesc" TextAlignment="Right" />
                             </StackPanel>
                         </controls:Setting.ActionContent>
                     </controls:Setting>
@@ -112,7 +125,7 @@
                 <controls:SettingsGroup Header="Hardware Information">
                     <controls:SettingExpander>
                         <controls:SettingExpander.Header>
-                            <controls:Setting Header="Device information" Description="Information about your device hardware">
+                            <controls:Setting Description="Information about your device hardware" Header="Device information">
                                 <controls:Setting.Icon>
                                     <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE950;" />
                                 </controls:Setting.Icon>
@@ -133,29 +146,71 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Grid.Column="0" Padding="0,0,0,8" Text="RAM" Opacity="0.75"/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Padding="32,0,0,8" x:Name="RAM"/>
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="0"
+                                       Padding="0,0,0,8"
+                                       Opacity="0.75"
+                                       Text="RAM" />
+                            <TextBlock x:Name="RAM"
+                                       Grid.Row="0"
+                                       Grid.Column="1"
+                                       Padding="32,0,0,8" />
 
-                            <TextBlock Grid.Row="1" Grid.Column="0" Padding="0,0,0,8" Text="Chip SOC version" Opacity="0.75"/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Padding="32,0,0,8" x:Name="CSV"/>
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Padding="0,0,0,8"
+                                       Opacity="0.75"
+                                       Text="Chip SOC version" />
+                            <TextBlock x:Name="CSV"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       Padding="32,0,0,8" />
 
-                            <TextBlock Grid.Row="2" Grid.Column="0" Padding="0,0,0,8" Text="Manufacturer Name" Opacity="0.75"/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Padding="32,0,0,8" x:Name="OEM"/>
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="0"
+                                       Padding="0,0,0,8"
+                                       Opacity="0.75"
+                                       Text="Manufacturer Name" />
+                            <TextBlock x:Name="OEM"
+                                       Grid.Row="2"
+                                       Grid.Column="1"
+                                       Padding="32,0,0,8" />
 
-                            <TextBlock Grid.Row="3" Grid.Column="0" Padding="0,0,0,8" Text="Core Build ID" Opacity="0.75"/>
-                            <TextBlock Grid.Row="3" Grid.Column="1" Padding="32,0,0,8" x:Name="Build"/>
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="0"
+                                       Padding="0,0,0,8"
+                                       Opacity="0.75"
+                                       Text="Core Build ID" />
+                            <TextBlock x:Name="Build"
+                                       Grid.Row="3"
+                                       Grid.Column="1"
+                                       Padding="32,0,0,8" />
 
-                            <TextBlock Grid.Row="4" Grid.Column="0" Padding="0,0,0,8" Text="Product Code" Opacity="0.75"/>
-                            <TextBlock Grid.Row="4" Grid.Column="1" Padding="32,0,0,8" x:Name="PC"/>
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="0"
+                                       Padding="0,0,0,8"
+                                       Opacity="0.75"
+                                       Text="Product Code" />
+                            <TextBlock x:Name="PC"
+                                       Grid.Row="4"
+                                       Grid.Column="1"
+                                       Padding="32,0,0,8" />
 
-                            <TextBlock Grid.Row="5" Grid.Column="0" Padding="0,0,0,8" Text="Hardware Revision" Opacity="0.75"/>
-                            <TextBlock Grid.Row="5" Grid.Column="1" Padding="32,0,0,8" x:Name="HR"/>
+                            <TextBlock Grid.Row="5"
+                                       Grid.Column="0"
+                                       Padding="0,0,0,8"
+                                       Opacity="0.75"
+                                       Text="Hardware Revision" />
+                            <TextBlock x:Name="HR"
+                                       Grid.Row="5"
+                                       Grid.Column="1"
+                                       Padding="32,0,0,8" />
                         </Grid>
                     </controls:SettingExpander>
 
                     <controls:SettingExpander>
                         <controls:SettingExpander.Header>
-                            <controls:Setting Header="Phone" Description="Information about your phone hardware">
+                            <controls:Setting Description="Information about your phone hardware" Header="Phone">
                                 <controls:Setting.Icon>
                                     <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE717;" />
                                 </controls:Setting.Icon>
@@ -174,32 +229,66 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Grid.Column="0" Padding="0,0,0,8" Text="Service Provider" Opacity="0.75"/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Padding="0,0,0,8" x:Name="SP"/>
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="0"
+                                       Padding="0,0,0,8"
+                                       Opacity="0.75"
+                                       Text="Service Provider" />
+                            <TextBlock x:Name="SP"
+                                       Grid.Row="0"
+                                       Grid.Column="1"
+                                       Padding="0,0,0,8" />
 
-                            <TextBlock Grid.Row="1" Grid.Column="0" Padding="0,0,0,8" Text="Mobile Operator" Opacity="0.75"/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Padding="0,0,0,8" x:Name="MO"/>
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Padding="0,0,0,8"
+                                       Opacity="0.75"
+                                       Text="Mobile Operator" />
+                            <TextBlock x:Name="MO"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       Padding="0,0,0,8" />
 
-                            <TextBlock Grid.Row="2" Grid.Column="0" Padding="0,0,0,8" Text="IMEI-SV" Opacity="0.75"/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Padding="0,0,0,8" x:Name="IMEI"/>
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="0"
+                                       Padding="0,0,0,8"
+                                       Opacity="0.75"
+                                       Text="IMEI-SV" />
+                            <TextBlock x:Name="IMEI"
+                                       Grid.Row="2"
+                                       Grid.Column="1"
+                                       Padding="0,0,0,8" />
 
-                            <TextBlock Grid.Row="3" Grid.Column="0" Padding="0,0,0,8" Text="Modem(s) Information" Opacity="0.75"/>
-                            <ListView Grid.Row="3" Grid.Column="1" Padding="0,0,0,8" x:Name="PhoneListView" SelectionMode="None" IsItemClickEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode="Disabled">
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="0"
+                                       Padding="0,0,0,8"
+                                       Opacity="0.75"
+                                       Text="Modem(s) Information" />
+                            <ListView x:Name="PhoneListView"
+                                      Grid.Row="3"
+                                      Grid.Column="1"
+                                      Padding="0,0,0,8"
+                                      IsItemClickEnabled="False"
+                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                      ScrollViewer.VerticalScrollMode="Disabled"
+                                      SelectionMode="None">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
-                                        <Setter Property="Padding" Value="0"/>
-                                        <Setter Property="Margin" Value="0"/>
-                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Padding" Value="0" />
+                                        <Setter Property="Margin" Value="0" />
+                                        <Setter Property="BorderThickness" Value="0" />
                                     </Style>
                                 </ListView.ItemContainerStyle>
                             </ListView>
                         </Grid>
                     </controls:SettingExpander>
                 </controls:SettingsGroup>
-                <controls:SettingsGroup x:Name="RegulatoryPanel" Visibility="Collapsed" Header="Legal Information">
+                <controls:SettingsGroup x:Name="RegulatoryPanel"
+                                        Header="Legal Information"
+                                        Visibility="Collapsed">
                     <controls:SettingExpander>
                         <controls:SettingExpander.Header>
-                            <controls:Setting Header="Regulatory" Description="Regulatory Information about your device">
+                            <controls:Setting Description="Regulatory Information about your device" Header="Regulatory">
                                 <controls:Setting.Icon>
                                     <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xEB95;" />
                                 </controls:Setting.Icon>
@@ -207,8 +296,13 @@
                         </controls:SettingExpander.Header>
 
                         <StackPanel Margin="56,16,16,16" Spacing="16">
-                            <TextBlock x:Name="ManufactureCountry" Padding="0,0,0,8" Text="MADE IN N/A"/>
-                            <Image x:Name="RegulatoryImage" HorizontalAlignment="Left" Stretch="Fill" MaxWidth="400"/>
+                            <TextBlock x:Name="ManufactureCountry"
+                                       Padding="0,0,0,8"
+                                       Text="MADE IN N/A" />
+                            <Image x:Name="RegulatoryImage"
+                                   MaxWidth="400"
+                                   HorizontalAlignment="Left"
+                                   Stretch="Fill" />
                         </StackPanel>
                     </controls:SettingExpander>
                 </controls:SettingsGroup>

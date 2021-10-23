@@ -1,23 +1,27 @@
-﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+﻿<UserControl x:Class="GlanceScreen.LockScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="using:GlanceScreen"
-             x:Class="GlanceScreen.LockScreen"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              x:Name="MainPageContainer"
              RequestedTheme="Dark">
     <UserControl.Resources>
         <local:IntegerHigherThanNilToBooleanConverter x:Key="IntegerHigherThanNilToBooleanConverter" />
         <local:IntegerIsFourToBooleanConverter x:Key="IntegerIsFourToBooleanConverter" />
         <local:IntegerIsNotFourToBooleanConverter x:Key="IntegerIsNotFourToBooleanConverter" />
-        
+
         <SolidColorBrush x:Key="BaseWhiteBrush" Color="{StaticResource SystemChromeWhiteColor}" />
-        <Style x:Key="TimeTextStyle" BasedOn="{StaticResource HeaderTextBlockStyle}" TargetType="TextBlock">
+        <Style x:Key="TimeTextStyle"
+               BasedOn="{StaticResource HeaderTextBlockStyle}"
+               TargetType="TextBlock">
             <Setter Property="Foreground" Value="{ThemeResource BaseWhiteBrush}" />
             <Setter Property="FontSize" Value="72" />
             <Setter Property="LineHeight" Value="80" />
         </Style>
-        <Style x:Key="DateTextStyle" BasedOn="{StaticResource TitleTextBlockStyle}" TargetType="TextBlock">
+        <Style x:Key="DateTextStyle"
+               BasedOn="{StaticResource TitleTextBlockStyle}"
+               TargetType="TextBlock">
             <Setter Property="FontSize" Value="24" />
             <Setter Property="LineHeight" Value="28" />
             <Setter Property="Margin" Value="0,-4,0,0" />
@@ -32,16 +36,24 @@
             <Setter Property="IsHitTestVisible" Value="False" />
             <Setter Property="FontWeight" Value="Normal" />
         </Style>
-        <Style x:Key="DetailTextSmallStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}" />
-        <Style x:Key="DetailTextLargeStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}">
+        <Style x:Key="DetailTextSmallStyle"
+               BasedOn="{StaticResource DetailTextBaseStyle}"
+               TargetType="TextBlock" />
+        <Style x:Key="DetailTextLargeStyle"
+               BasedOn="{StaticResource DetailTextBaseStyle}"
+               TargetType="TextBlock">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="LineHeight" Value="24" />
             <Setter Property="TextTrimming" Value="WordEllipsis" />
         </Style>
-        <Style x:Key="DetailTextMediumStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}">
+        <Style x:Key="DetailTextMediumStyle"
+               BasedOn="{StaticResource DetailTextBaseStyle}"
+               TargetType="TextBlock">
             <Setter Property="TextTrimming" Value="WordEllipsis" />
         </Style>
-        <Style x:Key="DetailTextExLargeStyle" TargetType="TextBlock" BasedOn="{StaticResource DetailTextBaseStyle}">
+        <Style x:Key="DetailTextExLargeStyle"
+               BasedOn="{StaticResource DetailTextBaseStyle}"
+               TargetType="TextBlock">
             <Setter Property="FontSize" Value="24" />
             <Setter Property="LineHeight" Value="28" />
             <Setter Property="FontWeight" Value="SemiLight" />
@@ -59,7 +71,92 @@
             <Setter Property="VerticalAlignment" Value="Top" />
         </Style>
     </UserControl.Resources>
-    <Grid x:Name="LockRootGrid" HorizontalAlignment="Stretch" x:Load="{x:Bind ViewModel.Mode, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}">
+    <Grid x:Name="LockRootGrid"
+          HorizontalAlignment="Stretch"
+          x:Load="{x:Bind ViewModel.Mode, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}">
+        <Image x:Name="ImageCtrl"
+               x:Load="{x:Bind ViewModel.BackgroundPhoto, Mode=OneWay}"
+               Source="{x:Bind BgImage, Mode=OneWay}"
+               Stretch="UniformToFill" />
+        <StackPanel x:Name="LockScreenTextBadgeContent"
+                    Margin="24,24,24,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Bottom"
+                    Tag="LockTextAndBadges">
+            <StackPanel x:Name="TimePanel" Orientation="Horizontal">
+                <TextBlock x:Name="Time"
+                           Style="{StaticResource TimeTextStyle}"
+                           Tag="TimeText"
+                           Text="{x:Bind TimeStr, Mode=OneWay}" />
+                <Grid x:Name="AlarmsIconPanel" Style="{StaticResource AlarmsIconPanelSmallStyle}">
+                    <Image x:Name="AlarmsIconImage"
+                           Width="16"
+                           Height="16"
+                           AutomationProperties.Name="Alarms" />
+                </Grid>
+            </StackPanel>
+            <TextBlock x:Name="Date"
+                       HorizontalAlignment="Left"
+                       x:Load="{x:Bind ViewModel.Date, Mode=OneWay}"
+                       Style="{StaticResource DateTextStyle}"
+                       Tag="DateText"
+                       Text="{x:Bind DateStr, Mode=OneWay}" />
+            <ListView x:Name="DetailTextPanel"
+                      Margin="0,32,-24,0"
+                      HorizontalAlignment="Left"
+                      x:Load="{x:Bind ViewModel.DetailedAppStatus, Mode=OneWay}"
+                      ItemsSource="{x:Bind LockScreenInfo.DetailText, Mode=OneWay}"
+                      SelectionMode="None"
+                      Tag="DetailTextPanel">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Margin" Value="0" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock x:Name="Detail1"
+                                   Style="{StaticResource DetailTextSmallStyle}"
+                                   Tag="DetailText"
+                                   Text="{Binding}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid x:Name="BadgeAndStatusContainer"
+                  MinHeight="20"
+                  Margin="0,24,0,22">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="BadgeContainer"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            x:Load="{x:Bind ViewModel.NotificationIcons, Mode=OneWay}"
+                            Orientation="Horizontal"
+                            Tag="BadgeContainer" />
+                <StackPanel x:Name="StatusProviderPanel"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                    <TextBlock x:Name="NetworkStatusProvider"
+                               Margin="28,0,0,0"
+                               VerticalAlignment="Center"
+                               AutomationProperties.Name="Network"
+                               FontFamily="{ThemeResource SymbolThemeFontFamily}"
+                               FontSize="16"
+                               Text="&#xF384;" />
+                    <TextBlock x:Name="BatteryStatusProvider"
+                               Margin="28,0,0,0"
+                               VerticalAlignment="Center"
+                               AutomationProperties.Name="Battery"
+                               FontFamily="{ThemeResource SymbolThemeFontFamily}"
+                               FontSize="16"
+                               Text="&#xEBB0;" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualStateGroup.States>
@@ -133,39 +230,5 @@
                 </VisualStateGroup.States>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <Image Stretch="UniformToFill" Source="{x:Bind BgImage, Mode=OneWay}" x:Name="ImageCtrl" x:Load="{x:Bind ViewModel.BackgroundPhoto, Mode=OneWay}" />
-        <StackPanel x:Name="LockScreenTextBadgeContent" Margin="24,24,24,0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Tag="LockTextAndBadges">
-            <StackPanel x:Name="TimePanel" Orientation="Horizontal">
-                <TextBlock x:Name="Time" Style="{StaticResource TimeTextStyle}" Tag="TimeText" Text="{x:Bind TimeStr, Mode=OneWay}" />
-                <Grid x:Name="AlarmsIconPanel" Style="{StaticResource AlarmsIconPanelSmallStyle}">
-                    <Image x:Name="AlarmsIconImage" AutomationProperties.Name="Alarms" Width="16" Height="16" />
-                </Grid>
-            </StackPanel>
-            <TextBlock x:Load="{x:Bind ViewModel.Date, Mode=OneWay}" x:Name="Date" Style="{StaticResource DateTextStyle}" Tag="DateText" HorizontalAlignment="Left" Text="{x:Bind DateStr, Mode=OneWay}"/>
-            <ListView x:Load="{x:Bind ViewModel.DetailedAppStatus, Mode=OneWay}" x:Name="DetailTextPanel" Margin="0,32,-24,0" HorizontalAlignment="Left" Tag="DetailTextPanel" ItemsSource="{x:Bind LockScreenInfo.DetailText, Mode=OneWay}" SelectionMode="None">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="Margin" Value="0" />
-                        <Setter Property="Padding" Value="0" />
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock x:Name="Detail1" Style="{StaticResource DetailTextSmallStyle}" Tag="DetailText" Text="{Binding}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Grid x:Name="BadgeAndStatusContainer" Margin="0,24,0,22" MinHeight="20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <StackPanel x:Name="BadgeContainer" Tag="BadgeContainer" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" x:Load="{x:Bind ViewModel.NotificationIcons, Mode=OneWay}" />
-                <StackPanel x:Name="StatusProviderPanel" VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="1">
-                    <TextBlock x:Name="NetworkStatusProvider" AutomationProperties.Name="Network" Text="&#xF384;" FontSize="16" Margin="28,0,0,0" VerticalAlignment="Center" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
-                    <TextBlock x:Name="BatteryStatusProvider" AutomationProperties.Name="Battery" Text="&#xEBB0;" FontSize="16" Margin="28,0,0,0" VerticalAlignment="Center" FontFamily="{ThemeResource SymbolThemeFontFamily}" />
-                </StackPanel>
-            </Grid>
-        </StackPanel>
     </Grid>
 </UserControl>

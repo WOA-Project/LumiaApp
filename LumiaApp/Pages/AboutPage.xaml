@@ -1,20 +1,19 @@
-﻿<Page
-    x:Class="LumiaApp.Pages.AboutPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:LumiaApp.Pages"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    xmlns:controls1="using:Microsoft.PowerToys.Settings.UI.Controls">
+﻿<Page x:Class="LumiaApp.Pages.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls1="using:Microsoft.PowerToys.Settings.UI.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:LumiaApp.Pages"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      mc:Ignorable="d">
 
     <controls1:SettingsPageControl ModuleDescription="Settings for your Lumia Phone"
                                    ModuleTitle="About"
                                    SecondaryLinksHeader="Links">
         <controls1:SettingsPageControl.PrimaryLinks>
-            <controls1:PageLink Text="Github Repository" Link="https://github.com/WOA-Project/LumiaApp" />
-            <controls1:PageLink Text="Website" Link="https://woa-project.github.io/LumiaWOA" />
+            <controls1:PageLink Link="https://github.com/WOA-Project/LumiaApp" Text="Github Repository" />
+            <controls1:PageLink Link="https://woa-project.github.io/LumiaWOA" Text="Website" />
         </controls1:SettingsPageControl.PrimaryLinks>
         <controls1:SettingsPageControl.ModuleContent>
             <StackPanel Orientation="Vertical">
@@ -40,8 +39,8 @@
             </StackPanel>
         </controls1:SettingsPageControl.ModuleContent>
         <controls1:SettingsPageControl.SecondaryLinks>
-            <controls1:PageLink Text="Third Party Notices" Link="https://github.com/WOA-Project/LumiaApp/blob/master/THIRD_PARTY.md" />
-            <controls1:PageLink Text="License" Link="https://github.com/WOA-Project/LumiaApp/blob/master/LICENSE" />
+            <controls1:PageLink Link="https://github.com/WOA-Project/LumiaApp/blob/master/THIRD_PARTY.md" Text="Third Party Notices" />
+            <controls1:PageLink Link="https://github.com/WOA-Project/LumiaApp/blob/master/LICENSE" Text="License" />
         </controls1:SettingsPageControl.SecondaryLinks>
     </controls1:SettingsPageControl>
 </Page>
