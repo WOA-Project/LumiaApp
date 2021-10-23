@@ -104,7 +104,7 @@
 
                     <local1:SettingExpander>
                         <local1:SettingExpander.Header>
-                            <local1:Setting Header="Color profile">
+                            <local1:Setting Header="Color profile" Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <local1:Setting.Icon>
                                     <FontIcon Glyph="&#xE790;" />
                                 </local1:Setting.Icon>

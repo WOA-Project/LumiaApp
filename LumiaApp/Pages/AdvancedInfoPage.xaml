@@ -68,7 +68,7 @@
                 <controls:SettingsGroup Header="Software Information">
                     <controls:SettingExpander>
                         <controls:SettingExpander.Header>
-                            <controls:Setting Description="Information about your device software" Header="Software release">
+                            <controls:Setting Description="Information about your device software" Header="Software release" Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.Icon>
                                     <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE835;" />
                                 </controls:Setting.Icon>
@@ -125,7 +125,7 @@
                 <controls:SettingsGroup Header="Hardware Information">
                     <controls:SettingExpander>
                         <controls:SettingExpander.Header>
-                            <controls:Setting Description="Information about your device hardware" Header="Device information">
+                            <controls:Setting Description="Information about your device hardware" Header="Device information" Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.Icon>
                                     <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE950;" />
                                 </controls:Setting.Icon>
@@ -210,7 +210,7 @@
 
                     <controls:SettingExpander>
                         <controls:SettingExpander.Header>
-                            <controls:Setting Description="Information about your phone hardware" Header="Phone">
+                            <controls:Setting Description="Information about your phone hardware" Header="Phone" Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.Icon>
                                     <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE717;" />
                                 </controls:Setting.Icon>
@@ -288,7 +288,7 @@
                                         Visibility="Collapsed">
                     <controls:SettingExpander>
                         <controls:SettingExpander.Header>
-                            <controls:Setting Description="Regulatory Information about your device" Header="Regulatory">
+                            <controls:Setting Description="Regulatory Information about your device" Header="Regulatory" Style="{StaticResource ExpanderHeaderSettingStyle}">
                                 <controls:Setting.Icon>
                                     <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xEB95;" />
                                 </controls:Setting.Icon>

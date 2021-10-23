@@ -23,7 +23,7 @@
 
                 <local1:SettingExpander>
                     <local1:SettingExpander.Header>
-                        <local1:Setting Description="After changing your USB Function Mode, you need to unplug and replug your device for the configuration to take effect." Header="General">
+                        <local1:Setting Description="After changing your USB Function Mode, you need to unplug and replug your device for the configuration to take effect." Header="General" Style="{StaticResource ExpanderHeaderSettingStyle}">
                             <local1:Setting.Icon>
                                 <FontIcon Glyph="&#xECF0;" />
                             </local1:Setting.Icon>
@@ -37,12 +37,13 @@
                               SelectionMode="Single">
                         <ListView.ItemContainerStyle>
                             <Style BasedOn="{StaticResource DefaultListViewItemStyle}" TargetType="ListViewItem">
-                                <Setter Property="Padding" Value="16" />
+                                <Setter Property="Padding" Value="0" />
+                                <Setter Property="Margin" Value="0" />
                             </Style>
                         </ListView.ItemContainerStyle>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <local1:Setting Description="{Binding Description, Mode=OneWay}" Header="{Binding Title, Mode=OneWay}">
+                                <local1:Setting Description="{Binding Description, Mode=OneWay}" Header="{Binding Title, Mode=OneWay}" Style="{StaticResource ExpanderContentSettingStyle}">
                                     <local1:Setting.Icon>
                                         <SymbolIcon Symbol="Forward" />
                                     </local1:Setting.Icon>

@@ -77,7 +77,7 @@
 
                         <local1:SettingExpander>
                             <local1:SettingExpander.Header>
-                                <local1:Setting Description="Show your lock screen background photo on the glance screen" Header="Background photo">
+                                <local1:Setting Description="Show your lock screen background photo on the glance screen" Header="Background photo" Style="{StaticResource ExpanderHeaderSettingStyle}">
                                     <local1:Setting.Icon>
                                         <FontIcon Glyph="&#xEE3F;" />
                                     </local1:Setting.Icon>
@@ -90,7 +90,7 @@
                                 </local1:Setting>
                             </local1:SettingExpander.Header>
 
-                            <local1:Setting Description="Change the way your background photo looks on the glance screen" Header="Image style">
+                            <local1:Setting Description="Change the way your background photo looks on the glance screen" Header="Image style" Style="{StaticResource ExpanderContentSettingStyle}">
 
                                 <local1:Setting.ActionContent>
                                     <ComboBox x:Name="BackgroundImageStyleComboBox"
@@ -158,7 +158,7 @@
 
                         <local1:SettingExpander>
                             <local1:SettingExpander.Header>
-                                <local1:Setting Description="Night mode overrides charging settings." Header="Night mode">
+                                <local1:Setting Description="Night mode overrides charging settings." Header="Night mode" Style="{StaticResource ExpanderHeaderSettingStyle}">
                                     <local1:Setting.Icon>
                                         <FontIcon Glyph="&#xE708;" />
                                     </local1:Setting.Icon>
@@ -178,8 +178,8 @@
                             </local1:SettingExpander.Header>
 
 
-                            <StackPanel Spacing="16">
-                                <local1:Setting Header="Time intervals">
+                            <StackPanel>
+                                <local1:Setting Header="Time intervals" Style="{StaticResource ExpanderContentSettingStyle}">
                                     <local1:Setting.Description>
                                         <StackPanel>
                                             <TextBlock x:Name="ShowLabelText"
@@ -192,7 +192,7 @@
                                     </local1:Setting.Description>
                                 </local1:Setting>
 
-                                <local1:Setting Header="Start time">
+                                <local1:Setting Header="Start time" Style="{StaticResource ExpanderContentSettingStyle}">
                                     <local1:Setting.ActionContent>
                                         <TimePicker ClockIdentifier="24HourClock"
                                                     IsEnabled="{x:Bind NightModeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}"
@@ -200,7 +200,7 @@
                                     </local1:Setting.ActionContent>
                                 </local1:Setting>
 
-                                <local1:Setting Header="End time">
+                                <local1:Setting Header="End time" Style="{StaticResource ExpanderContentSettingStyle}">
                                     <local1:Setting.ActionContent>
                                         <TimePicker ClockIdentifier="24HourClock"
                                                     IsEnabled="{x:Bind NightModeComboBox.SelectedIndex, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}"
