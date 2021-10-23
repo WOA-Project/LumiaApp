@@ -34,22 +34,31 @@ namespace AdvancedInfo.Handlers
             BitmapImage bitmap = new();
 
             using IRandomAccessStreamWithContentType strm = await file.OpenReadAsync();
-            using Stream readStrm = strm.AsStreamForRead();
-            using MagickImage img = new(readStrm);
 
-            img.ColorFuzz = new Percentage(50);
-            img.Transparent(DarkMode ? MagickColors.Black : MagickColors.White);
-
-            byte[] imageData = img.ToByteArray();
-
-            using InMemoryRandomAccessStream stream = new();
-            using (DataWriter writer = new(stream.GetOutputStreamAt(0)))
+            try
             {
-                writer.WriteBytes(imageData);
-                await writer.StoreAsync();
-            }
+                using Stream readStrm = strm.AsStreamForRead();
+                using MagickImage img = new(readStrm);
 
-            await bitmap.SetSourceAsync(stream);
+                img.ColorFuzz = new Percentage(50);
+                img.Transparent(DarkMode ? MagickColors.Black : MagickColors.White);
+
+                byte[] imageData = img.ToByteArray();
+
+                using InMemoryRandomAccessStream stream = new();
+                using (DataWriter writer = new(stream.GetOutputStreamAt(0)))
+                {
+                    writer.WriteBytes(imageData);
+                    await writer.StoreAsync();
+                }
+
+                await bitmap.SetSourceAsync(stream);
+            }
+            catch
+            {
+                strm.Seek(0);
+                await bitmap.SetSourceAsync(strm);
+            }
             return bitmap;
         }
 
