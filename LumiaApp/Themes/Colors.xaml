@@ -6,6 +6,10 @@
         <ResourceDictionary x:Key="Dark">
             <StaticResource x:Key="CardBackgroundBrush" ResourceKey="CardBackgroundFillColorDefaultBrush" />
             <StaticResource x:Key="CardBorderBrush" ResourceKey="CardStrokeColorDefaultBrush" />
+            <StaticResource x:Key="CardBackgroundHoverBrush" ResourceKey="ControlStrokeColorDefault" />
+            <StaticResource x:Key="CardBorderHoverBrush" ResourceKey="ControlStrokeColorDefault" />
+            <StaticResource x:Key="CardBackgroundPressedBrush" ResourceKey="CardBackgroundFillColorSecondaryBrush" />
+            <StaticResource x:Key="CardBorderPressedBrush" ResourceKey="ControlStrokeColorDefault" />
             <StaticResource x:Key="CardPrimaryForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
             <Thickness x:Key="CardBorderThickness">1</Thickness>
         </ResourceDictionary>
@@ -13,6 +17,10 @@
         <ResourceDictionary x:Key="Light">
             <StaticResource x:Key="CardBackgroundBrush" ResourceKey="CardBackgroundFillColorDefaultBrush" />
             <StaticResource x:Key="CardBorderBrush" ResourceKey="CardStrokeColorDefaultBrush" />
+            <StaticResource x:Key="CardBackgroundHoverBrush" ResourceKey="ControlStrokeColorDefault" />
+            <StaticResource x:Key="CardBorderHoverBrush" ResourceKey="ControlStrokeColorDefault" />
+            <StaticResource x:Key="CardBackgroundPressedBrush" ResourceKey="CardBackgroundFillColorSecondaryBrush" />
+            <StaticResource x:Key="CardBorderPressedBrush" ResourceKey="ControlStrokeColorDefault" />
             <StaticResource x:Key="CardPrimaryForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
             <Thickness x:Key="CardBorderThickness">1</Thickness>
         </ResourceDictionary>
@@ -20,6 +28,10 @@
         <ResourceDictionary x:Key="HighContrast">
             <StaticResource x:Key="CardBackgroundBrush" ResourceKey="SystemColorButtonFaceColorBrush" />
             <StaticResource x:Key="CardBorderBrush" ResourceKey="SystemColorButtonTextColorBrush" />
+            <StaticResource x:Key="CardBackgroundHoverBrush" ResourceKey="SystemColorHighlightColorBrush" />
+            <StaticResource x:Key="CardBorderHoverBrush" ResourceKey="SystemColorHighlightTextColorBrush" />
+            <StaticResource x:Key="CardBackgroundPressedBrush" ResourceKey="SystemColorHighlightColorBrush" />
+            <StaticResource x:Key="CardBorderPressedBrush" ResourceKey="SystemColorHighlightTextColorBrush" />
             <StaticResource x:Key="CardPrimaryForegroundBrush" ResourceKey="SystemColorButtonTextColorBrush" />
             <Thickness x:Key="CardBorderThickness">2</Thickness>
         </ResourceDictionary>

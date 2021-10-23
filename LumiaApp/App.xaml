@@ -9,6 +9,19 @@
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <SettingsThemeResources xmlns="using:LumiaApp.Controls.Settings" />
+                <ResourceDictionary>
+                    <ResourceDictionary.ThemeDictionaries>
+                        <ResourceDictionary x:Key="Light">
+                            <x:Boolean x:Key="IsDarkTheme">false</x:Boolean>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="Dark">
+                            <x:Boolean x:Key="IsDarkTheme">true</x:Boolean>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="Default">
+                            <x:Boolean x:Key="IsDarkTheme">false</x:Boolean>
+                        </ResourceDictionary>
+                    </ResourceDictionary.ThemeDictionaries>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Networking.NetworkOperators;
@@ -35,6 +36,11 @@ namespace AdvancedInfo.Handlers
                 counter++;
                 MobileBroadbandModem modem = MobileBroadbandModem.FromId(device.Id);
 
+                if (string.IsNullOrEmpty(modem.DeviceInformation.SerialNumber))
+                {
+                    continue;
+                }
+
                 string suffix = ": ";
 
                 if (MoreThanOne)
@@ -45,7 +51,7 @@ namespace AdvancedInfo.Handlers
                 modemList.Add("IMEI" + suffix + modem.DeviceInformation.SerialNumber);
                 if (modem.DeviceInformation.TelephoneNumbers.Count > 0)
                 {
-                    foreach (string number in modem.DeviceInformation.TelephoneNumbers)
+                    foreach (string number in modem.DeviceInformation.TelephoneNumbers.Where(x => !string.IsNullOrEmpty(x)))
                     {
                         modemList.Add("MDN" + suffix + number);
                     }

@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage.Streams;
 using System.IO;
 using System.Threading.Tasks;
+using ImageMagick;
 
 namespace AdvancedInfo.Handlers
 {
@@ -26,6 +27,30 @@ namespace AdvancedInfo.Handlers
         private DPPHandler()
         {
             
+        }
+
+        public async Task<BitmapImage> GetBitmapImageAsync(StorageFile file, bool DarkMode = false)
+        {
+            BitmapImage bitmap = new();
+
+            using IRandomAccessStreamWithContentType strm = await file.OpenReadAsync();
+            using Stream readStrm = strm.AsStreamForRead();
+            using MagickImage img = new(readStrm);
+
+            img.ColorFuzz = new Percentage(50);
+            img.Transparent(DarkMode ? MagickColors.Black : MagickColors.White);
+
+            byte[] imageData = img.ToByteArray();
+
+            using InMemoryRandomAccessStream stream = new();
+            using (DataWriter writer = new(stream.GetOutputStreamAt(0)))
+            {
+                writer.WriteBytes(imageData);
+                await writer.StoreAsync();
+            }
+
+            await bitmap.SetSourceAsync(stream);
+            return bitmap;
         }
 
         private async Task Load()
@@ -55,15 +80,13 @@ namespace AdvancedInfo.Handlers
                 if (RegScreenFiles.Any(x => string.Equals(x.Name, "imagelabel_dark.png", StringComparison.InvariantCultureIgnoreCase)))
                 {
                     StorageFile ImageLabel = await RegScreen.GetFileAsync("imagelabel_dark.png");
-                    RegulatoryBlack = new BitmapImage();
-                    await RegulatoryBlack.SetSourceAsync(await ImageLabel.OpenReadAsync());
+                    RegulatoryBlack = await GetBitmapImageAsync(ImageLabel, true);
                 }
 
                 if (RegScreenFiles.Any(x => string.Equals(x.Name, "imagelabel_light.png", StringComparison.InvariantCultureIgnoreCase)))
                 {
                     StorageFile ImageLabel = await RegScreen.GetFileAsync("imagelabel_light.png");
-                    RegulatoryWhite = new BitmapImage();
-                    await RegulatoryWhite.SetSourceAsync(await ImageLabel.OpenReadAsync());
+                    RegulatoryWhite = await GetBitmapImageAsync(ImageLabel, false);
                 }
             }
 

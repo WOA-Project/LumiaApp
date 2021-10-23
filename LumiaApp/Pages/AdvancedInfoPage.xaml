@@ -17,7 +17,11 @@
         </controls:SettingsPageControl.PrimaryLinks>
         <controls:SettingsPageControl.ModuleContent>
             <StackPanel Orientation="Vertical">
-
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <ReorderThemeTransition />
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
                 <Grid HorizontalAlignment="Stretch" Margin="0,0,0,32">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />

@@ -8,7 +8,13 @@
             <Setter.Value>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical"
-                                Spacing="2"/>
+                                Spacing="2">
+                        <StackPanel.ChildrenTransitions>
+                            <TransitionCollection>
+                                <ReorderThemeTransition />
+                            </TransitionCollection>
+                        </StackPanel.ChildrenTransitions>
+                    </StackPanel>
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>

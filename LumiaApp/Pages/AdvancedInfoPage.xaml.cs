@@ -73,8 +73,6 @@ namespace LumiaApp
                 dpphandler = await DPPHandler.LoadHandlerAsync();
 
                 IMEI.Text = dpphandler.IMEI;
-                ManufactureCountry.Text = dpphandler.COO;
-                RegulatoryImage.Source = IsDarkTheme ? dpphandler.RegulatoryBlack : dpphandler.RegulatoryWhite;
 
                 foreach (string Line in dpphandler.Product.Split('\n'))
                 {
@@ -87,6 +85,10 @@ namespace LumiaApp
                         PC.Text = Line.Split(":").Last();
                     }
                 }
+
+                ManufactureCountry.Text = dpphandler.COO ?? "N/A";
+                RegulatoryImage.Source = IsDarkTheme ? dpphandler.RegulatoryBlack : dpphandler.RegulatoryWhite;
+                RegulatoryPanel.Visibility = Visibility.Visible;
             }
             catch
             {

@@ -18,6 +18,11 @@
         </controls1:SettingsPageControl.PrimaryLinks>
         <controls1:SettingsPageControl.ModuleContent>
             <StackPanel Orientation="Vertical">
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <ReorderThemeTransition />
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
                 <controls1:SettingsGroup Header="Version">
                     <controls1:Setting x:Name="AppInfoBlock" Header="Lumia Settings">
                         <controls1:Setting.Icon>
