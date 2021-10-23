@@ -16,11 +16,11 @@
                 <ResourceDictionary>
                     <ResourceDictionary.ThemeDictionaries>
                         <ResourceDictionary x:Key="Light">
-                            <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="LayerFillColorDefaultBrush" />
+                            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent" />
                             <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
                         </ResourceDictionary>
                         <ResourceDictionary x:Key="Dark">
-                            <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="LayerFillColorDefaultBrush" />
+                            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent" />
                             <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
                         </ResourceDictionary>
                         <ResourceDictionary x:Key="HighContrast">
@@ -30,8 +30,8 @@
                     </ResourceDictionary.ThemeDictionaries>
 
                     <!--  L-Pattern Overwriting resources  -->
-                    <Thickness x:Key="NavigationViewContentMargin">0,48,0,0</Thickness>
-                    <Thickness x:Key="NavigationViewContentGridBorderThickness">1,1,0,0</Thickness>
+                    <Thickness x:Key="NavigationViewContentMargin">0,9,0,0</Thickness>
+                    <Thickness x:Key="NavigationViewContentGridBorderThickness">0,0,0,0</Thickness>
                     <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
                     <Thickness x:Key="NavigationViewHeaderMargin">56,34,0,0</Thickness>
                 </ResourceDictionary>

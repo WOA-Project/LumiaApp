@@ -24,8 +24,8 @@
         </DataTemplate>
     </controls:NavigationView.MenuItemTemplate>
 
-    <Grid BorderBrush="{ThemeResource ContentDialogSeparatorBorderBrush}" BorderThickness="1,0,0,0">
-        <Frame x:Name="SelectedSettings" Background="{ThemeResource LayerFillColorDefaultBrush}">
+    <Grid>
+        <Frame x:Name="SelectedSettings">
             <Frame.ContentTransitions>
                 <TransitionCollection>
                     <PopupThemeTransition />

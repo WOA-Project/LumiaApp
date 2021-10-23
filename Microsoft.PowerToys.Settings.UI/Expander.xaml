@@ -4,9 +4,9 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals">
 
-    <x:Double x:Key="ExpanderChevronGlyphSize">16</x:Double>
+    <x:Double x:Key="SettingsExpanderChevronGlyphSize">16</x:Double>
 
-    <Style x:Key="ExpanderHeaderDownStyle" TargetType="ToggleButton">
+    <Style x:Key="SettingsExpanderHeaderDownStyle" TargetType="ToggleButton">
         <Setter Property="Padding" Value="{StaticResource ExpanderHeaderPadding}"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
@@ -205,8 +205,8 @@
                             Height="{ThemeResource ExpanderChevronButtonSize}"
                             Margin="{ThemeResource ExpanderChevronMargin}">
                             <muxc:AnimatedIcon
-                                Width="{StaticResource ExpanderChevronGlyphSize}"
-                                Height="{StaticResource ExpanderChevronGlyphSize}"
+                                Width="{StaticResource SettingsExpanderChevronGlyphSize}"
+                                Height="{StaticResource SettingsExpanderChevronGlyphSize}"
                                 x:Name="ExpandCollapseChevron"
                                 RenderTransformOrigin="0.5, 0.5"
                                 Foreground="{ThemeResource ExpanderChevronForeground}"
@@ -231,7 +231,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ExpanderHeaderUpStyle" TargetType="ToggleButton" BasedOn="{StaticResource ExpanderHeaderDownStyle}">
+    <Style x:Key="SettingsExpanderHeaderUpStyle" TargetType="ToggleButton" BasedOn="{StaticResource SettingsExpanderHeaderDownStyle}">
         <Setter Property="Padding" Value="{StaticResource ExpanderHeaderPadding}"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
@@ -430,8 +430,8 @@
                             Height="{ThemeResource ExpanderChevronButtonSize}"
                             Margin="{ThemeResource ExpanderChevronMargin}">
                             <muxc:AnimatedIcon
-                                Width="{StaticResource ExpanderChevronGlyphSize}"
-                                Height="{StaticResource ExpanderChevronGlyphSize}"
+                                Width="{StaticResource SettingsExpanderChevronGlyphSize}"
+                                Height="{StaticResource SettingsExpanderChevronGlyphSize}"
                                 x:Name="ExpandCollapseChevron"
                                 RenderTransformOrigin="0.5, 0.5"
                                 Foreground="{ThemeResource ExpanderChevronForeground}"
@@ -456,7 +456,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="DefaultExpanderStyle" TargetType="muxc:Expander">
+    <Style x:Key="SettingsExpanderStyle" TargetType="muxc:Expander">
         <!-- We won't make this control tab stoppable, since the tab focus should go
             to the toggle button. For this logic, several things were made:
             1. Expander::OnApplyTemplate - We set the toggle button's events source to the expander's. This will announce expander properties
@@ -556,7 +556,7 @@
                                 <VisualState x:Name="Down" />
                                 <VisualState x:Name="Up">
                                     <VisualState.Setters>
-                                        <Setter Target="ExpanderHeader.Style" Value="{StaticResource ExpanderHeaderUpStyle}" />
+                                        <Setter Target="ExpanderHeader.Style" Value="{StaticResource SettingsExpanderHeaderUpStyle}" />
                                         <Setter Target="ExpanderContent.BorderThickness" Value="{StaticResource ExpanderContentUpBorderThickness}" />
                                         <Setter Target="ExpanderContent.CornerRadius" Value="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource TopCornerRadiusFilterConverter}}" />
                                         <Setter Target="ExpanderHeader.(Grid.Row)" Value="1" />
@@ -583,7 +583,7 @@
                             CornerRadius="{TemplateBinding CornerRadius}"
                             IsEnabled="{TemplateBinding IsEnabled}"
                             Padding="{StaticResource ExpanderHeaderPadding}"
-                            Style="{StaticResource ExpanderHeaderDownStyle}"
+                            Style="{StaticResource SettingsExpanderHeaderDownStyle}"
                             HorizontalAlignment="Stretch"
                             HorizontalContentAlignment="{StaticResource ExpanderHeaderHorizontalContentAlignment}"
                             VerticalContentAlignment="{StaticResource ExpanderHeaderVerticalContentAlignment}"
