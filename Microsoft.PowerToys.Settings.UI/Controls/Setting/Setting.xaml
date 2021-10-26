@@ -36,6 +36,26 @@
                                         <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource TextFillColorDisabledBrush}" />
                                     </VisualState.Setters>
                                 </VisualState>
+                                <VisualState x:Name="Compact">
+                                    <VisualState.Setters>
+                                        <Setter Target="ContentPresenter.(Grid.Row)" Value="1" />
+                                        <Setter Target="ContentPresenter.(Grid.Column)" Value="1" />
+                                        <Setter Target="ContentPresenter.Margin" Value="0,4,0,0" />
+                                        <Setter Target="ContentPresenter.HorizontalAlignment" Value="Left" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="CompactDisabled">
+                                    <VisualState.Setters>
+                                        <Setter Target="ContentPresenter.(Grid.Row)" Value="1" />
+                                        <Setter Target="ContentPresenter.(Grid.Column)" Value="1" />
+                                        <Setter Target="ContentPresenter.Margin" Value="0,4,0,0" />
+                                        <Setter Target="ContentPresenter.HorizontalAlignment" Value="Left" />
+                                        <Setter Target="HeaderPresenter.Foreground" Value="{ThemeResource TextFillColorDisabledBrush}" />
+                                        <Setter Target="DescriptionPresenter.Foreground" Value="{ThemeResource TextFillColorDisabledBrush}" />
+                                        <Setter Target="IconPresenter.Foreground" Value="{ThemeResource TextFillColorDisabledBrush}" />
+                                        <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource TextFillColorDisabledBrush}" />
+                                    </VisualState.Setters>
+                                </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Grid.ColumnDefinitions>
@@ -46,6 +66,11 @@
                             <ColumnDefinition Width="Auto"/>
                             <!-- Action control -->
                         </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
                         <ContentPresenter x:Name="IconPresenter"
                           Content="{TemplateBinding Icon}"
@@ -68,6 +93,7 @@
                                 x:Name="HeaderPresenter"
                                 Text="{TemplateBinding Header}"
                                 VerticalAlignment="Center"
+                                TextWrapping="Wrap"
                                 Foreground="{ThemeResource CardPrimaryForegroundBrush}" />
 
                             <ContentPresenter

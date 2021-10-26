@@ -11,6 +11,8 @@ namespace Microsoft.PowerToys.Settings.UI.Controls
 {
     [TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
     [TemplateVisualState(Name = "Disabled", GroupName = "CommonStates")]
+    [TemplateVisualState(Name = "Compact", GroupName = "CommonStates")]
+    [TemplateVisualState(Name = "CompactDisabled", GroupName = "CommonStates")]
     [TemplatePart(Name = PartIconPresenter, Type = typeof(ContentPresenter))]
     [TemplatePart(Name = PartDescriptionPresenter, Type = typeof(ContentPresenter))]
     public class Setting : ContentControl
@@ -83,9 +85,20 @@ namespace Microsoft.PowerToys.Settings.UI.Controls
             _iconPresenter = (ContentPresenter)_setting.GetTemplateChild(PartIconPresenter);
             _descriptionPresenter = (ContentPresenter)_setting.GetTemplateChild(PartDescriptionPresenter);
             Update();
-            SetEnabledState();
+            SetState(ActualWidth);
             IsEnabledChanged += Setting_IsEnabledChanged;
+            SizeChanged += Setting_SizeChanged;
             base.OnApplyTemplate();
+        }
+
+        private void Setting_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (e.NewSize.Width == e.PreviousSize.Width || ActionContent == null)
+            {
+                return;
+            }
+
+            SetState(e.NewSize.Width);
         }
 
         private static void OnHeaderChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -105,12 +118,15 @@ namespace Microsoft.PowerToys.Settings.UI.Controls
 
         private void Setting_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            SetEnabledState();
+            SetState(ActualWidth);
         }
 
-        private void SetEnabledState()
+        private void SetState(double Width)
         {
-            VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled", true);
+            if (ActionContent is FrameworkElement e && e.ActualWidth <= Width / 2)
+                VisualStateManager.GoToState(this, IsEnabled ? "Normal" : "Disabled", true);
+            else
+                VisualStateManager.GoToState(this, IsEnabled ? "Compact" : "CompactDisabled", true);
         }
 
         private void Update()
