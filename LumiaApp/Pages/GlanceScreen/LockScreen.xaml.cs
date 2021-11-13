@@ -25,13 +25,17 @@ namespace GlanceScreen
         {
             this.InitializeComponent();
 
-            LockScreenInfo = LockAppBroker.CreateLockScreenInfo();
-
             TimeStr = DateTime.Now.ToString("t");
             DateStr = DateTime.Now.ToString("D").Replace(", " + DateTime.Now.Year.ToString(), "").Replace(" " + DateTime.Now.Year.ToString(), "").Replace(DateTime.Now.Year.ToString(), "");
 
-            BgImage = new BitmapImage();
-            BgImage.SetSource(LockScreenInfo.LockScreenImage);
+            try
+            {
+                LockScreenInfo = LockAppBroker.CreateLockScreenInfo();
+
+                BgImage = new BitmapImage();
+                BgImage.SetSource(LockScreenInfo.LockScreenImage);
+            }
+            catch { }
         }
     }
 }
