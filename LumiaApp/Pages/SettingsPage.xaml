@@ -6,86 +6,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:settings="using:LumiaApp.Controls.Settings"
+      xmlns:controls="using:LumiaApp.Controls"
       muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
       Loaded="Page_Loaded"
       mc:Ignorable="d">
 
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <ResourceDictionary.ThemeDictionaries>
-                        <ResourceDictionary x:Key="Light">
-                            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent" />
-                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
-                        </ResourceDictionary>
-                        <ResourceDictionary x:Key="Dark">
-                            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent" />
-                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent" />
-                        </ResourceDictionary>
-                        <ResourceDictionary x:Key="HighContrast">
-                            <SolidColorBrush x:Key="NavigationViewContentBackground" Color="{ThemeResource SystemColorWindowColor}" />
-                            <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="{ThemeResource SystemColorWindowColor}" />
-                        </ResourceDictionary>
-                    </ResourceDictionary.ThemeDictionaries>
-
-                    <!--  L-Pattern Overwriting resources  -->
-                    <Thickness x:Key="NavigationViewContentMargin">0,9,0,0</Thickness>
-                    <Thickness x:Key="NavigationViewContentGridBorderThickness">0,0,0,0</Thickness>
-                    <CornerRadius x:Key="NavigationViewContentGridCornerRadius">8,0,0,0</CornerRadius>
-                    <Thickness x:Key="NavigationViewHeaderMargin">56,34,0,0</Thickness>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>
-
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
-        <Rectangle x:Name="XboxContentSafeRect"
-                   Width="48"
-                   Canvas.ZIndex="0"
-                   Fill="{ThemeResource NavigationViewDefaultPaneBackground}"
-                   Visibility="Collapsed" />
-
-        <Border x:Name="AppTitleBar"
-                Grid.Column="1"
-                Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
-                VerticalAlignment="Top"
-                Background="Transparent"
-                Canvas.ZIndex="1"
-                IsHitTestVisible="True">
-            <StackPanel x:Name="AppTitleAndIcon" Orientation="Horizontal">
-                <Image x:Name="AppFontIcon"
-                       Width="22"
-                       Height="22"
-                       Margin="0,0,10,0"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Source="ms-appx:///Assets/Square44x44Logo.png" />
-
-                <TextBlock x:Name="AppTitle"
-                           VerticalAlignment="Center"
-                           Style="{StaticResource CaptionTextBlockStyle}"
-                           Text="{x:Bind GetAppTitleFromSystem()}" />
-            </StackPanel>
-        </Border>
-
+    <controls:NavigationViewWindowControl>
         <settings:SettingsControl x:Name="NavigationViewControl"
-                                  Grid.Column="1"
                                   AlwaysShowHeader="False"
-                                  Canvas.ZIndex="0"
-                                  DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
-                                  IsBackButtonVisible="Collapsed"
-                                  IsSettingsVisible="False"
-                                  IsTabStop="False"
-                                  IsTitleBarAutoPaddingEnabled="False"
-                                  Loaded="OnNavigationViewControlLoaded"
-                                  PaneClosing="NavigationViewControl_PaneClosing"
-                                  PaneOpening="NavigationViewControl_PaneOpened">
+                                  IsSettingsVisible="False">
             <settings:SettingsControl.PaneHeader>
                 <Button Margin="-36,48,4,8"
                         HorizontalAlignment="Stretch"
@@ -127,18 +56,5 @@
                 </Button>
             </settings:SettingsControl.PaneHeader>
         </settings:SettingsControl>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <local:DeviceFamilyTrigger DeviceFamily="Windows.Xbox" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="XboxContentSafeRect.Visibility" Value="Visible" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-
-        </VisualStateManager.VisualStateGroups>
-    </Grid>
+    </controls:NavigationViewWindowControl>
 </Page>

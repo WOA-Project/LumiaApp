@@ -9,6 +9,9 @@
                          d:DesignWidth="400"
                          Loaded="UserControl_Loaded"
                          SelectionChanged="NavView_SelectionChanged"
+                         BackRequested="NavigationView_BackRequested"
+                         IsBackButtonVisible="Auto"
+                         IsBackEnabled="{x:Bind SelectedSettings.CanGoBack, Mode=OneWay}"
                          mc:Ignorable="d">
 
     <controls:NavigationView.MenuItemTemplate>

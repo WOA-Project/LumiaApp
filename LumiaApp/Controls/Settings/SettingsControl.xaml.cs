@@ -43,7 +43,7 @@ namespace LumiaApp.Controls.Settings
 
         private void NavView_SelectionChanged(MUXC.NavigationView sender, MUXC.NavigationViewSelectionChangedEventArgs args)
         {
-            if (args.SelectedItem is SettingsMenuItem item)
+            if (args.SelectedItem is SettingsMenuItem item && item.Page != SelectedSettings.CurrentSourcePageType)
             {
                 SelectedSettings.Navigate(item.Page);
             }
@@ -53,6 +53,12 @@ namespace LumiaApp.Controls.Settings
         {
             if (MenuItems.Count > 0)
                 SelectedItem = MenuItems.First();
+        }
+
+        private void NavigationView_BackRequested(MUXC.NavigationView sender, MUXC.NavigationViewBackRequestedEventArgs args)
+        {
+            SelectedSettings.GoBack();
+            SelectedItem = MenuItems.Where(x => x is SettingsMenuItem i && i.Page == SelectedSettings.CurrentSourcePageType).First();
         }
     }
 }
