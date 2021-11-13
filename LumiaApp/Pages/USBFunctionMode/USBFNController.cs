@@ -3,6 +3,8 @@ using System.Linq;
 using System.Text;
 using RegistryRT;
 
+#nullable enable
+
 namespace USBFunctionMode
 {
     public class USBFNController
@@ -45,13 +47,13 @@ namespace USBFunctionMode
             }
         }
 
-        public string[] GetListOfConfigurations()
+        public string[]? GetListOfConfigurations()
         {
             reg.GetSubKeyList(RegistryHive.HKEY_LOCAL_MACHINE, GetUSBFNConfigurationsLocation(), out string[] result);
             return result == null ? null : result.Where(x => !x.Equals("default", StringComparison.InvariantCultureIgnoreCase)).ToArray();
         }
 
-        public string GetCurrentConfiguration()
+        public string? GetCurrentConfiguration()
         {
             reg.QueryValue(RegistryHive.HKEY_LOCAL_MACHINE, GetUSBFNLocation(), "CurrentConfiguration", out RegistryType type, out byte[] buffer);
             

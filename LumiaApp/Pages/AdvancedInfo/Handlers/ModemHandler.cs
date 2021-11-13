@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Networking.NetworkOperators;
 
+#nullable enable
+
 namespace AdvancedInfo.Handlers
 {
     public class ModemHandler
@@ -61,6 +63,6 @@ namespace AdvancedInfo.Handlers
             ModemInformation = modemList.AsReadOnly();
         }
 
-        public IReadOnlyList<string> ModemInformation { get; internal set; }
+        public IReadOnlyList<string>? ModemInformation { get; internal set; }
     }
 }

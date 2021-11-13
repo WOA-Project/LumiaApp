@@ -2,6 +2,8 @@
 using System;
 using System.ComponentModel;
 
+#nullable enable
+
 namespace ColorProfile
 {
     public enum ProfileMode
@@ -15,7 +17,7 @@ namespace ColorProfile
 
     public class SettingsModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private Registry registry => LumiaApp.App.Registry;
 
@@ -59,7 +61,7 @@ namespace ColorProfile
         private bool GetRegistrySZ(string ValueName, out string ValueData)
         {
             ValueData = "";
-            byte[] buffer;
+            byte[]? buffer;
 
             bool status = registry.QueryValue(
                 RegistryHive.HKEY_LOCAL_MACHINE,
@@ -71,7 +73,7 @@ namespace ColorProfile
 
             if (status && type == RegistryType.String && buffer != null)
             {
-                ValueData = System.Text.Encoding.Unicode.GetString(buffer, 0, buffer.Length - 2);
+                ValueData = System.Text.Encoding.Unicode.GetString(buffer, 0, buffer!.Length - 2);
             }
 
             return status;

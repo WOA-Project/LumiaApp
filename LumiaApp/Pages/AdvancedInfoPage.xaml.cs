@@ -7,14 +7,16 @@ using System.Linq;
 using Windows.UI.Xaml.Input;
 using Windows.System;
 
+#nullable enable
+
 namespace LumiaApp
 {
     public sealed partial class AdvancedInfoPage : Page
     {
-        private RegistryHandler reghandler;
-        private DPPHandler dpphandler;
-        private ModemHandler modemhandler;
-        private InternalHandler internalhandler;
+        private RegistryHandler? reghandler;
+        private DPPHandler? dpphandler;
+        private ModemHandler? modemhandler;
+        private InternalHandler? internalhandler;
 
         public AdvancedInfoPage()
         {
@@ -74,15 +76,18 @@ namespace LumiaApp
 
                 IMEI.Text = dpphandler.IMEI;
 
-                foreach (string Line in dpphandler.Product.Split('\n'))
+                if (dpphandler.Product != null)
                 {
-                    if (Line.StartsWith("HWID"))
+                    foreach (string Line in dpphandler.Product.Split('\n'))
                     {
-                        HR.Text = string.Join(".", Line.Split(":").Last().ToCharArray());
-                    }
-                    else if (Line.StartsWith("CTR"))
-                    {
-                        PC.Text = Line.Split(":").Last();
+                        if (Line.StartsWith("HWID"))
+                        {
+                            HR.Text = string.Join(".", Line.Split(":").Last().ToCharArray());
+                        }
+                        else if (Line.StartsWith("CTR"))
+                        {
+                            PC.Text = Line.Split(":").Last();
+                        }
                     }
                 }
 

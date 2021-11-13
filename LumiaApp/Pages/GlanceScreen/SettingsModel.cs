@@ -2,6 +2,8 @@
 using System;
 using System.ComponentModel;
 
+#nullable enable
+
 namespace GlanceScreen
 {
     public enum TimeMode
@@ -84,7 +86,7 @@ namespace GlanceScreen
 
     public class SettingsModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private Registry registry => LumiaApp.App.Registry;
 

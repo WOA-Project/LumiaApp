@@ -8,14 +8,16 @@ using System.IO;
 using System.Threading.Tasks;
 using ImageMagick;
 
+#nullable enable
+
 namespace AdvancedInfo.Handlers
 {
     public class DPPHandler
     {
-        private StorageFolder DPP;
-        private StorageFolder Vendor;
-        private StorageFolder RegScreen;
-        private StorageFolder Certs;
+        private StorageFolder? DPP;
+        private StorageFolder? Vendor;
+        private StorageFolder? RegScreen;
+        private StorageFolder? Certs;
 
         public static async Task<DPPHandler> LoadHandlerAsync()
         {
@@ -126,11 +128,11 @@ namespace AdvancedInfo.Handlers
             }
         }
 
-        public string IMEI { get; internal set; }
-        public string COO { get; internal set; }
-        public string CoverColor { get; internal set; }
-        public BitmapImage RegulatoryBlack { get; internal set; }
-        public BitmapImage RegulatoryWhite { get; internal set; }
-        public string Product { get; internal set; }
+        public string? IMEI { get; internal set; }
+        public string? COO { get; internal set; }
+        public string? CoverColor { get; internal set; }
+        public BitmapImage? RegulatoryBlack { get; internal set; }
+        public BitmapImage? RegulatoryWhite { get; internal set; }
+        public string? Product { get; internal set; }
     }
 }

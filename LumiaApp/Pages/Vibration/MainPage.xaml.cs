@@ -60,9 +60,9 @@ namespace Vibration
 
         private void EnableToggle_Toggled(object sender, RoutedEventArgs e)
         {
-            SetRegistryDwordFromVibra("Enabled", (sender as ToggleSwitch).IsOn ? 1 : 0);
+            SetRegistryDwordFromVibra("Enabled", ((ToggleSwitch)sender).IsOn ? 1 : 0);
 
-            if ((sender as ToggleSwitch).IsOn)
+            if (((ToggleSwitch)sender).IsOn)
                 SendHapticFeedback();
         }
 
@@ -71,7 +71,7 @@ namespace Vibration
             if (!ran1)
                 ran1 = true;
             else
-                SetRegistryDwordFromVibra("Duration", (int)(sender as Slider).Value);
+                SetRegistryDwordFromVibra("Duration", (int)((Slider)sender).Value);
 
             SendHapticFeedback();
         }
@@ -103,7 +103,7 @@ namespace Vibration
             if (!ran2)
                 ran2 = true;
             else
-                SetRegistryDwordFromVibra("Intensity", (int)(sender as Slider).Value);
+                SetRegistryDwordFromVibra("Intensity", (int)((Slider)sender).Value);
 
             SendHapticFeedback();
         }

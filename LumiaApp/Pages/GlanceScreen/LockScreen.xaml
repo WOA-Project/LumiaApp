@@ -76,7 +76,7 @@
           x:Load="{x:Bind ViewModel.Mode, Mode=OneWay, Converter={StaticResource IntegerHigherThanNilToBooleanConverter}}">
         <Image x:Name="ImageCtrl"
                x:Load="{x:Bind ViewModel.BackgroundPhoto, Mode=OneWay}"
-               Source="{x:Bind BgImage, Mode=OneWay}"
+               Source="{x:Bind BgImage}"
                Stretch="UniformToFill" />
         <StackPanel x:Name="LockScreenTextBadgeContent"
                     Margin="24,24,24,0"
@@ -87,7 +87,7 @@
                 <TextBlock x:Name="Time"
                            Style="{StaticResource TimeTextStyle}"
                            Tag="TimeText"
-                           Text="{x:Bind TimeStr, Mode=OneWay}" />
+                           Text="{x:Bind TimeStr}" />
                 <Grid x:Name="AlarmsIconPanel" Style="{StaticResource AlarmsIconPanelSmallStyle}">
                     <Image x:Name="AlarmsIconImage"
                            Width="16"
@@ -100,12 +100,12 @@
                        x:Load="{x:Bind ViewModel.Date, Mode=OneWay}"
                        Style="{StaticResource DateTextStyle}"
                        Tag="DateText"
-                       Text="{x:Bind DateStr, Mode=OneWay}" />
+                       Text="{x:Bind DateStr}" />
             <ListView x:Name="DetailTextPanel"
                       Margin="0,32,-24,0"
                       HorizontalAlignment="Left"
                       x:Load="{x:Bind ViewModel.DetailedAppStatus, Mode=OneWay}"
-                      ItemsSource="{x:Bind LockScreenInfo.DetailText, Mode=OneWay}"
+                      ItemsSource="{x:Bind LockScreenInfo.DetailText}"
                       SelectionMode="None"
                       Tag="DetailTextPanel">
                 <ListView.ItemContainerStyle>

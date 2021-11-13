@@ -1,6 +1,8 @@
 ﻿using System.Text;
 using RegistryRT;
 
+#nullable enable
+
 namespace AdvancedInfo.Handlers
 {
     public class RegistryHandler
@@ -21,12 +23,12 @@ namespace AdvancedInfo.Handlers
             ReleaseName = ReadRegistryStringFromDTI("PhoneReleaseVersion");
         }
 
-        private string ReadRegistryStringFromDTI(string Value)
+        private string? ReadRegistryStringFromDTI(string Value)
         {
             return ReadRegistryString(RegistryHive.HKEY_LOCAL_MACHINE, "SYSTEM\\Platform\\DeviceTargetingInfo", Value);
         }
 
-        private string ReadRegistryString(RegistryHive hive, string Key, string Value)
+        private string? ReadRegistryString(RegistryHive hive, string Key, string Value)
         {
             uint regtype;
             byte[] buffer;
@@ -38,13 +40,13 @@ namespace AdvancedInfo.Handlers
             return null;
         }
 
-        public string ProductCode { get; internal set; }
-        public string ProductCodeCleaned { get; internal set; }
-        public string MobileOperator { get; internal set; }
-        public string ServiceProvider { get; internal set; }
-        public string SOC { get; internal set; }
-        public string Manufacturer { get; internal set; }
-        public string ModelName { get; internal set; }
-        public string ReleaseName { get; internal set; }
+        public string? ProductCode { get; internal set; }
+        public string? ProductCodeCleaned { get; internal set; }
+        public string? MobileOperator { get; internal set; }
+        public string? ServiceProvider { get; internal set; }
+        public string? SOC { get; internal set; }
+        public string? Manufacturer { get; internal set; }
+        public string? ModelName { get; internal set; }
+        public string? ReleaseName { get; internal set; }
     }
 }

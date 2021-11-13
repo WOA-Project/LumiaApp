@@ -9,12 +9,16 @@ namespace AdvancedInfo.Handlers
 
         public InternalHandler()
         {
-            long RAMVal;
+            long RAMVal = 0;
             bool result = airt.GetSystemRAM(out RAMVal);
 
             if (result)
             {
                 RAM = (Math.Round(double.Parse(RAMVal.ToString()) / (1024d * 1024 * 1024) * 100, MidpointRounding.ToEven) / 100).ToString() +" GB";
+            }
+            else
+            {
+                RAM = "N/A";
             }
 
             FirmwareBuild = airt.GetFirmwareVersion() + " (" + airt.GetSystemFirmwareVersion() + ")";

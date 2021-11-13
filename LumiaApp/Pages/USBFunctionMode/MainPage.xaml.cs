@@ -2,13 +2,22 @@
 using System.Linq;
 using Windows.UI.Xaml.Controls;
 
+#nullable enable
+
 namespace USBFunctionMode
 {
     public class ModeDisplayItem
     {
-        public string ConfigName { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string ConfigName { get; }
+        public string Title { get; }
+        public string Description { get; }
+
+        public ModeDisplayItem(string ConfigName, string Title, string Description)
+        {
+            this.ConfigName = ConfigName;
+            this.Title = Title;
+            this.Description = Description;
+        }
     }
 
     public sealed partial class MainPage : Page
@@ -17,13 +26,8 @@ namespace USBFunctionMode
         {
             this.InitializeComponent();
 
-            IOrderedEnumerable<ModeDisplayItem> items = USBFNController.Instance.GetListOfConfigurations()?.Select(
-                x => new ModeDisplayItem()
-                {
-                    ConfigName = x,
-                    Title = USBFNController.GetFunctionRoleFriendlyName(x),
-                    Description = USBFNController.GetFunctionRoleDescription(x)
-                }).OrderByDescending(x => x.Title.Split(" ")[0]);
+            IOrderedEnumerable<ModeDisplayItem>? items = USBFNController.Instance.GetListOfConfigurations()?.Select(
+                x => new ModeDisplayItem(x, USBFNController.GetFunctionRoleFriendlyName(x), USBFNController.GetFunctionRoleDescription(x))).OrderByDescending(x => x.Title.Split(" ")[0]);
 
             ModesListView.ItemsSource = items;
             ModesListView.SelectedIndex = items == null ? 0 : items.ToList().FindIndex(

@@ -2,11 +2,13 @@
 using System.ComponentModel;
 using RegistryRT;
 
+#nullable enable
+
 namespace GesturesTouch
 {
     public class SettingsModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         private Registry registry => LumiaApp.App.Registry;
 

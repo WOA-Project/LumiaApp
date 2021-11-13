@@ -6,6 +6,8 @@ using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
+#nullable enable
+
 namespace GlanceScreen
 {
     /// <summary>
@@ -15,11 +17,11 @@ namespace GlanceScreen
     {
         public SettingsModel ViewModel => LumiaApp.App.GlanceViewModel;
 
-        public LockScreenInfo LockScreenInfo;
+        public LockScreenInfo? LockScreenInfo;
 
         public string TimeStr;
         public string DateStr;
-        public BitmapImage BgImage;
+        public BitmapImage? BgImage;
 
         public LockScreen()
         {
